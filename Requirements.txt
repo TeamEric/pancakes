@@ -1,0 +1,18 @@
+Requirements
+============
+
+What is this project, in a sentence?
+	This project involves taking pictures of pages of a medieval manuscript, putting those pages in a database, and displaying them on a webpage.
+	
+What are the general requirements?
+	Have only one page displayed per webpage or web request.
+	Sections / table of contents.
+	Ability for a translator to add a translation of each page at some point in the future, through any interface.
+	
+Who will be our main contact?
+	Dr. Nick, chair of English dept., or Steve Gromatzki (sp?), head librarian.
+	Contact both via email or telephone.
+	
+Where will we find our necessary resources?
+	The book is in the rare books room at the library.
+	Storage location for our web forms and database: TBD
