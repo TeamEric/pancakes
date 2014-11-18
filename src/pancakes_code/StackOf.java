@@ -3,24 +3,24 @@ import java.util.*;
 
 public class StackOf {
 
-	private ArrayList<String> ITEMS;
+	private ArrayList<Object> ITEMS;
 	
 	public StackOf(){
-		ITEMS=new ArrayList<String>();
+		ITEMS=new ArrayList<Object>();
 	}
 	
 	public boolean isEmpty(){
 		return ITEMS.isEmpty();
 	}
 	
-	public void push(String item){
+	public void push(Object item){
 		ITEMS.add(item);
 	}
-	public String pop(){
-		String popped = ITEMS.remove(ITEMS.size()-1);
+	public Object pop(){
+		Object popped = ITEMS.remove(ITEMS.size()-1);
 		return popped;
 	}
-	public String peek(){
+	public Object peek(){
 		return ITEMS.get(ITEMS.size()-1);
 	}
 	public int size(){
