@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Compendium Theologica Veritatas</title>
+</head>
+<body>
 	<select style="position:absolute;width:10%">
 		<option value="Chapter 1">Chapter 1</option>
 		<option value="Chapter 2">Chapter 2</option>
 		<option value="Chapter 3">Chapter 3</option>
 		<option value="Chapter 4">Chapter 4</option>
 	</select>
-	<form style="position:relative;left:88%;" action="action_page.php">
+	<form style="position:relative;text-align:right" action="action_page.php">
 		<input style="width:10%" type="text" name="Search" value="Search">
 		<input type="submit" value="?">
 	</form>
-	<h1 style="position:relative;top:-50px;color:#0088bb;text-align:top;text-align:center;font-family:Vladimir">
-		COMPENDIUM THEOLOGICA <br> VERITATAS
+	<h1 style="position:relative;top:-45px;color:#0088bb;font-size:30;text-align:top;width:10%;left:15%;width:70%;text-align:center;font-family:Vladimir">
+		COMPENDIUM THEOLOGICA VERITATAS
 	</h1>
-</head>
 
-<body>
-
-  <h1 style = "font-color:#0099cc; font-size:220; font-family:arial">My First Heading</h1>
-
-  <p>My first paragraph.</p>
+	<style>
+		viewLeft {
+			line-height:100%;
+			background-color:#f2dcaa;
+			height:80%;
+			width:47.5%;
+			float:left;
+			padding:1%;	 
+			overflow:auto;
+		}
+		viewRight {
+			overflow:auto;
+			line-height:30px;
+			background-color:#f9f3e2;
+			height:80%;
+			width:47.5%;
+			float:right;
+			padding:1%;	 	 
+		}
+	</style>
+	<viewLeft>
+		<object data="worldarea.txt" type="text/plain" style="width:100%;height:100%"></object>
+	</viewLeft>
+	<viewRight>
+		<iframe src="worldarea.txt" width="100%" height="100%"></iframe>
+	</viewRight>
 
 </body>
 
