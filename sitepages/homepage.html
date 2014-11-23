@@ -1,52 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color:#f6eabb">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Compendium Theologica Veritatas</title>
 </head>
 <body>
-	<select style="position:absolute;width:10%">
-		<option value="Chapter 1">Chapter 1</option>
-		<option value="Chapter 2">Chapter 2</option>
-		<option value="Chapter 3">Chapter 3</option>
-		<option value="Chapter 4">Chapter 4</option>
-	</select>
-	<form style="position:relative;text-align:right" action="action_page.php">
-		<input style="width:10%" type="text" name="Search" value="Search">
-		<input type="submit" value="?">
-	</form>
-	<h1 style="position:relative;top:-45px;color:#0088bb;font-size:30;text-align:top;width:10%;left:15%;width:70%;text-align:center;font-family:Vladimir">
-		COMPENDIUM THEOLOGICA VERITATAS
-	</h1>
-
-	<div style="text-align:center;background-color:#dddddd;height:25%;width:90%;overflow:scroll">
-		<style>
-			viewLeft {
-				line-height:200px;
-				background-color:#f2dcaa;
-				height:80%;
-				width:47.5%;
-				float:left;
-				padding:1%;	 
-				overflow:auto;
-			}
-			viewRight {
-				line-height:30px;
-				background-color:#f9f3e2;
-				height:80%;
-				width:47.5%;
-				float:right;
-				padding:1%;	 	 
-			}
-		</style>
-		<viewLeft>
-			<object data="../img/001.jpg" style="width:15%;"></object>
-		</viewLeft>
-		<viewRight>
-			<iframe src="worldarea.txt" width="100%" height="100%"></iframe>
-		</viewRight>
+	<div style="background-color:#f2dcaa;height:10%;border:1pt solid #222222">
+		<select style="position:absolute;top:5pt;left:2%;width:10%">
+			<option value="Chapter 1">
+				GGGG
+			</option>
+			<option value="Chapter 2">
+				RRRR
+			</object>
+			<option value="Chapter 3">Chapter 3</option>
+			<option value="Chapter 4">Chapter 4</option>
+		</select>
+		<form style="position:absolute;text-align:right;top:5pt;left:50%;width:48%" action="action_page.php">
+			<input style="width:20%" type="text" name="Search" value="Search">
+			<input type="submit" value="?">
+		</form>
+		<h1 style="position:relative;top:5%;color:#0088bb;font-size:30;text-align:top;width:10%;left:15%;width:70%;text-align:center;font-family:Vladimir">
+			COMPENDIUM THEOLOGICA VERITATAS
+		</h1>
 	</div>
-
+	<br>
+	<style>
+		viewLeft {
+			line-height:200px;
+			background-color:#f2dcaa;
+			height:80%;
+			width:47.5%;
+			float:left;
+			border:1pt solid #222222;
+			padding:1%;	 
+			overflow:auto;
+		}
+		viewRight {
+			line-height:30px;
+			background-color:#f2dcaa;
+			height:80%;
+			width:47.5%;
+			float:right;
+			border:1pt solid #222222;
+			padding:1%;	 	 
+		}
+	</style>
+	<viewLeft>
+		<object data="../img/002.jpg" style="width:100%;"></object>
+		<object data="../img/003.jpg" style="width:100%;"></object>
+		<object data="../img/004.jpg" style="width:100%;"></object>
+	</viewLeft>
+	<viewRight>
+		<div>
+			<input style="float:left;background-color:blue;text-align:center;width:23%" type="Submit" value="Transcription">
+			<input style="float:left;text-align:center;width:23%"type="Submit" value="Translation">
+			<input style="float:left;text-align:center;width:23%"type="Submit" value="Notes">
+			<input style="float:right;width:20%" type="text" name="Search" value="Search">
+			<input style="width:5%" type="submit" value="?">
+		</div>
+		<iframe src="worldarea.txt" width="100%" height="400px"></iframe>
+	</viewRight>
+	
 </body>
 
 </html>
