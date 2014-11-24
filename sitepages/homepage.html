@@ -105,16 +105,37 @@
         image.src = String(dir+mid+ext);
     }
 	}
+	function toTranscription(){
+		
+	}
+	function toTranslation(){
+		
+	}
+	function toNotes(){
+		
+	}
+	function goToPage(){
+		var image=document.getElementById('page');
+    var text=document.getElementById('pagen');
+		var dir="../img/";
+		var ext=".jpg";
+		var data=String(text.value);
+		if(!(parseFloat(data)<0)&&!(parseFloat(data)>900)){
+	  	while(data.length<3)data="0"+data;
+			image.src=String(dir+data+ext);
+			image.alt=data;
+		}
+	}
 	</script>
 	
 	<viewLeft>
 		<div class="rollovericons">
 		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
 		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
-		<form style="position:relative;text-align:right;" action="goto_page.php">
-			<input style="float:right;background-color:#ddc497;text-align:center"type="Submit" value="Go to">
-			<input style="float:right;width:10%" type="text" name="Search" placeholder="page#">
-		</form>
+		<div style="position:relative;text-align:right;">
+			<input style="float:right;background-color:#ddc497;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
+			<input style="float:right;width:10%" type="text" id="pagen" name="Search" placeholder="page#">
+		</div>
 		</div>
 		<br>
 		<div>
@@ -123,9 +144,9 @@
 	</viewLeft>
 	<viewRight>
 		<div>
-			<input style="float:center;background-color:#ddc497;text-align:center;width:32%" type="Submit" value="Transcription">
-			<input style="float:center;background-color:#ddc497;text-align:center;width:32%"type="Submit" value="Translation">
-			<input style="float:center;background-color:#ddc497;text-align:center;width:32%"type="Submit" value="Notes">
+			<input style="float:center;background-color:#ddc497;text-align:center;width:32%" onclick="toTranscription()" type="Submit" value="Transcription">
+			<input style="float:center;background-color:#ddc497;text-align:center;width:32%" onclick="toTranscription()" type="Submit" value="Translation">
+			<input style="float:center;background-color:#ddc497;text-align:center;width:32%" onclick="toTranscription()" type="Submit" value="Notes">
 		</div>
 		<!-- <div style="width:98%">
 				<input style="float:right;width:5%;text-align:center;background-color:#ddc497;" type="submit" value="?">
