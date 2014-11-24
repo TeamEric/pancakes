@@ -6,18 +6,21 @@
 </head>
 <body>
 	<div style="background-color:#f2dcaa;height:10%;border:1pt solid #222222">
-		<select style="position:absolute;top:15pt;left:2%;width:10%">
-			<option value="Chapter 1">
-				GGGG
+		<select style="position:absolute;top:15pt;left:2%;width:10%" text = "Select a Chapter">
+			<option value="ThisShouldNotBeDone" disabled selected = "selected">
+				Select Chapter
 			</option>
+			<option value="Chapter 1">
+				Chapter 1
+			</object>
 			<option value="Chapter 2">
-				RRRR
+				Chapter 2
 			</object>
 			<option value="Chapter 3">Chapter 3</option>
 			<option value="Chapter 4">Chapter 4</option>
 		</select>
-		<form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="action_page.php">
-			<input style="width:20%" type="text" name="Search" value="Search">
+		<form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="search_page.php">
+			<input style="width:20%" type="text" name="Search" placeholder="Search">
 			<input style="background-color:#ddc497"type="submit" value="?">
 		</form>
 		<h1 style="position:relative;top:5%;color:#0088bb;font-size:30;text-align:top;width:10%;left:15%;width:70%;text-align:center;font-family:Vladimir">
@@ -27,7 +30,7 @@
 	<br>
 	<style>
 		viewLeft {
-			line-height:200px;
+			line-height:30px;
 			background-color:#f2dcaa;
 			height:80%;
 			width:47.5%;
@@ -45,11 +48,23 @@
 			border:1pt solid #222222;
 			padding:1%;	 	 
 		}
+		.rollovericons input{
+			margin: 2pt;
+		}
 	</style>
 	<viewLeft>
+		<div class="rollovericons">
+		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" type="Submit" value="<">
+		<input style="float:left;background-color:#ddc497;text-align:center;width:5%"type="Submit" value=">">
+		<form style="position:relative;text-align:right;" action="goto_page.php">
+			<input style="float:right;background-color:#ddc497;text-align:center"type="Submit" value="Go to">
+			<input style="float:right;width:10%" type="text" name="Search" placeholder="page#">
+		</form>
+		</div>
+		<br>
+		<div>
 		<object data="../img/002.jpg" style="width:100%;"></object>
-		<object data="../img/003.jpg" style="width:100%;"></object>
-		<object data="../img/004.jpg" style="width:100%;"></object>
+		</div>
 	</viewLeft>
 	<viewRight>
 		<div>
