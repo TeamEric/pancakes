@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html style="background-color:#f8ebbc">
+<html style="background-color:#f9ebbc">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Compendium Theologica Veritatis</title>
 </head>
 <body>
 	<div style="background-color:#f2dcaa;height:10%;border:1pt solid #222222">
-		<select style="position:absolute;top:15pt;left:2%;width:10%">
-			<option value="ThisShouldNotBeDone" disabled selected = "selected">
-				Select Chapter
-			</option>
-			<option value="heading1" disabled> Heading 1</option>
-			<option value="Chapter 1">Chapter 1</object>
-			<option value="Chapter 2">Chapter 2</object>
-			<option value="heading1" disabled> Heading 2</option>
-			<option value="Chapter 3">Chapter 3</option>
-			<option value="Chapter 4">Chapter 4</option>
-		</select>
+		<form action="chapter_select.php" method="post">
+			<select style="position:absolute;top:15pt;left:2%;width:10%">
+				<option value="ThisShouldNotBeDone" disabled selected = "selected">
+					Select Chapter
+				</option>
+				<option value="heading1" disabled> Heading 1</option>
+				<option value="Chapter 1">Chapter 1</object>
+				<option value="Chapter 2">Chapter 2</object>
+				<option value="heading1" disabled> Heading 2</option>
+				<option value="Chapter 3">Chapter 3</option>
+				<option value="Chapter 4">Chapter 4</option>
+			</select>
+		</form>
 		<form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="search_page.php">
 			<input style="width:20%" type="text" name="Search" placeholder="Search">
 			<input style="background-color:#ddc497"type="submit" value="?">
@@ -50,10 +52,65 @@
 			margin: 2pt;
 		}
 	</style>
+	<script>
+	function nextImage() {
+		//store the element in var image
+	  var image = document.getElementById('page');
+		//get directory and extension of files
+	  var dir="../img/";
+		var ext=".jpg";
+	
+		//imgdata is the alt text. We set that.
+		var imgData=image.alt;
+		var position=parseFloat(imgData);
+		var mid=""+position;
+		//add the padding zeroes to mid part 1
+		while(mid.length<3)mid="0"+mid;
+		var position2=position+1;
+		var mid2=""+position2;
+		//add the padding zeroes to mid part 2
+		while(mid2.length<3)mid2="0"+mid2;
+	
+		if (image.src.match(String(dir+mid+ext))) {
+				image.src = String(dir+mid2+ext);
+				image.alt = mid2;
+				//image=document.getElementByID('page');
+	  } else {
+	      image.src = String(dir+mid+ext);
+	  }
+	}
+	function prevImage() {
+		//store the element in var image
+    var image = document.getElementById('page');
+		//get directory and extension of files
+    var dir="../img/";
+		var ext=".jpg";
+		
+		//imgdata is the alt text. We set that.
+		var imgData=image.alt;
+		var position=parseFloat(imgData);
+		var mid=""+position;
+		//add the padding zeroes to mid part 1
+		while(mid.length<3)mid="0"+mid;
+		var position2=position-1;
+		var mid2=""+position2;
+		//add the padding zeroes to mid part 2
+		while(mid2.length<3)mid2="0"+mid2;
+		
+		if (image.src.match(String(dir+mid+ext))&&position2>=0) {
+				image.src = String(dir+mid2+ext);
+				image.alt = mid2;
+				//image=document.getElementByID('page');
+    } else {
+        image.src = String(dir+mid+ext);
+    }
+	}
+	</script>
+	
 	<viewLeft>
 		<div class="rollovericons">
-		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" type="Submit" value="<">
-		<input style="float:left;background-color:#ddc497;text-align:center;width:5%"type="Submit" value=">">
+		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
+		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
 		<form style="position:relative;text-align:right;" action="goto_page.php">
 			<input style="float:right;background-color:#ddc497;text-align:center"type="Submit" value="Go to">
 			<input style="float:right;width:10%" type="text" name="Search" placeholder="page#">
@@ -61,7 +118,7 @@
 		</div>
 		<br>
 		<div>
-		<object data="../img/002.jpg" style="width:100%;"></object>
+		<img id="page" alt="001" src="../img/001.jpg" style="width:100%;"></img>
 		</div>
 	</viewLeft>
 	<viewRight>
