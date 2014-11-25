@@ -91,6 +91,7 @@
 		if (image.src.match(String(dir+mid+ext))) {
 				image.src = String(dir+mid2+ext);
 				image.alt = mid2;
+				toTranscription();
 				//image=document.getElementByID('page');
 	  } else {
 	      image.src = String(dir+mid+ext);
@@ -117,6 +118,7 @@
 		if (image.src.match(String(dir+mid+ext))&&position2>=0) {
 				image.src = String(dir+mid2+ext);
 				image.alt = mid2;
+				toTranscription();
 				//image=document.getElementByID('page');
     } else {
         image.src = String(dir+mid+ext);
@@ -137,10 +139,7 @@
 		var textView=document.getElementById('textView');
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
-		if(fileExists(item)){
-			textView.setAttribute('src',item);
-		}
-		else textView.setAttribute('src',"transcription/trsc_def.txt");
+		textView.setAttribute('src',item);
 	}
 	function toTranslation(){
 		var image=document.getElementById('page');
@@ -157,10 +156,7 @@
 		var textView=document.getElementById('textView');
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
-		if(fileExists(item)){
-			textView.setAttribute('src',item);
-		}
-		else textView.setAttribute('src',"translation/trns_def.txt");
+		textView.setAttribute('src',item);
 	}
 	function toNotes(){
 		var image=document.getElementById('page');
@@ -177,10 +173,7 @@
 		var textView=document.getElementById('textView');
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
-		if(fileExists(item)){
-			textView.setAttribute('src',item);
-		}
-		else textView.setAttribute('src',"note/note_def.txt");
+		textView.setAttribute('src',item);
 	}
 	function goToPage(){
 		var image=document.getElementById('page');
@@ -192,6 +185,7 @@
 	  	while(data.length<3)data="0"+data;
 			image.src=String(dir+data+ext);
 			image.alt=data;
+			toTranscription();
 		}
 	}
 	</script>
