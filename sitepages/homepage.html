@@ -195,16 +195,16 @@
 	
 	<viewLeft>
 		<div class="rollovericons">
-		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
-		<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
-		<div style="position:relative;text-align:right;">
+			<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
+			<input style="float:left;background-color:#ddc497;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
+			<input style="float:left;width:3%" type="image" src="zoomOut.gif" alt="Submit">
+			<input style="float:left;width:3%" type="image" src="zoomIn.gif" alt="Submit">
 			<input style="float:right;background-color:#ddc497;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
 			<input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
 		</div>
-		</div>
 		<br>
 		<div>
-		<img id="page" alt="001" src="../img/001.jpg" style="width:100%;"></img>
+			<img id="page" alt="001" src="../img/001.jpg" style="width:100%;"></img>
 		</div>
 	</viewLeft>
 	<viewRight>
