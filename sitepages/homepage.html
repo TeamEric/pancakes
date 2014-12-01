@@ -7,23 +7,23 @@
   <body>
     <div style="background-color:#c3c3cf;height:10%;border:1pt solid #222222">
       <form action="chapter_select.php" method="post">
-        <select style="position:absolute;top:15pt;left:2%;width:10%">
-          <option value="ThisShouldNotBeDone" disabled selected = "selected">
-            Select Chapter
-          </option>
-          <option value="heading1" disabled> Heading 1</option>
-          <option value="Chapter 1">Chapter 1</object>
-            <option value="Chapter 2">Chapter 2</object>
-              <option value="heading1" disabled> Heading 2</option>
-              <option value="Chapter 3">Chapter 3</option>
-              <option value="Chapter 4">Chapter 4</option>
-              </select>
+				<select style="position:absolute;top:15pt;left:2%;width:10%">
+					<option value="ThisShouldNotBeDone" disabled selected = "selected">
+						Select Chapter
+					</option>
+					<option value="heading1" disabled> Heading 1</option>
+					<option value="Chapter 1">Chapter 1</object>
+					<option value="Chapter 2">Chapter 2</object>
+					<option value="heading1" disabled> Heading 2</option>
+					<option value="Chapter 3">Chapter 3</option>
+					<option value="Chapter 4">Chapter 4</option>
+      	</select>
       </form>
-      <form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="search_page.php">
-        <input style="width:20%" type="text" name="Search" placeholder="Search">
-          <input type="submit" value="?">
-            </form>
-      <h1 style="position:relative;top:5%;color:#000000;font-size:30;text-align:top;width:10%;left:15%;width:70%;text-align:center;font-family:Vladimir">
+      	<form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="search_page.php">
+      	<input style="width:20%" type="text" name="Search" placeholder="Search">
+      	<input type="submit" value="?">
+      </form>
+      <h1 style="position:relative;top:5%; color:#000000; font-size:30; text-align:top; width:10%; left:15%; width:70%; text-align:center; font-family:Vladimir">
         COMPENDIUM THEOLOGICA VERITATIS
       </h1>
     </div>
@@ -211,23 +211,35 @@
         
     function zoomIn(){
       var image=document.getElementById('page');
-      var originalZoom=image.width;
-      image.width=originalZoom+5;
+      var imgStyle=image.style;
+			var width=imgStyle["width"];
+			var num=parseFloat(width.substring(0,width.indexOf("%")))+5;
+			imgStyle["width"]=num+"%";
     }
     function zoomOut(){
-      
+      var image=document.getElementById('page');
+      var imgStyle=image.style;
+			var width=imgStyle["width"];
+			var num=parseFloat(width.substring(0,width.indexOf("%")))-5;
+			imgStyle["width"]=num+"%";
     }
-      </script>
+		function zoomDef(){
+      var image=document.getElementById('page');
+      var imgStyle=image.style;
+			imgStyle["width"]="100%";
+		}
+  </script>
     
     <viewLeft>
       <div class="rollovericons">
         <input style="float:left;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
-          <input style="float:left;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
-            <input style="float:left;width:3%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
-              <input style="float:left;width:3%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-                <input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
-                  <input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
-                    </div>
+        <input style="float:left;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
+        <input style="float:left;width:3%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+        <input style="float:left;width:7%;text-align:center;" type="Submit" value="100%" onclick="zoomDef()" alt="Submit">
+        <input style="float:left;width:3%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+        <input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
+        <input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
+      </div>
       <br>
       <div>
         <img id="page" alt="001" src="../img/001.jpg" style="width:100%;border:1pt solid black"></img>
@@ -236,9 +248,9 @@
     <viewRight>
       <div>
         <input style="float:center;text-align:center;width:32%" onclick="toTranscription()" type="Submit" value="Transcription">
-          <input style="float:center;text-align:center;width:32%" onclick="toTranslation()" type="Submit" value="Translation">
-            <input style="float:center;text-align:center;width:32%" onclick="toNotes()" type="Submit" value="Notes">
-              </div>
+        <input style="float:center;text-align:center;width:32%" onclick="toTranslation()" type="Submit" value="Translation">
+        <input style="float:center;text-align:center;width:32%" onclick="toNotes()" type="Submit" value="Notes">
+      </div>
       <!-- <div style="width:98%">
        <input style="float:right;width:5%;text-align:center;background-color:#ddc497;" type="submit" value="?">
        <input style="float:right;width:32%" type="text" name="Search" value="Search">
