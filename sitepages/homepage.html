@@ -213,15 +213,19 @@
       var image=document.getElementById('page');
       var imgStyle=image.style;
 			var width=imgStyle["width"];
-			var num=parseFloat(width.substring(0,width.indexOf("%")))+5;
-			imgStyle["width"]=num+"%";
+			var num=parseFloat(width.substring(0,width.indexOf("%")))+10;
+			if(num<1001){
+				imgStyle["width"]=num+"%";
+			}
     }
     function zoomOut(){
       var image=document.getElementById('page');
       var imgStyle=image.style;
 			var width=imgStyle["width"];
-			var num=parseFloat(width.substring(0,width.indexOf("%")))-5;
-			imgStyle["width"]=num+"%";
+			var num=parseFloat(width.substring(0,width.indexOf("%")))-10;
+			if(num>39){
+				imgStyle["width"]=num+"%";
+			}
     }
 		function zoomDef(){
       var image=document.getElementById('page');
@@ -234,9 +238,9 @@
       <div class="rollovericons">
         <input style="float:left;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
         <input style="float:left;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">">
-        <input style="float:left;width:3%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
-        <input style="float:left;width:7%;text-align:center;" type="Submit" value="100%" onclick="zoomDef()" alt="Submit">
-        <input style="float:left;width:3%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+        <input style="float:left;width:3.5%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+        <input style="float:left;width:2.8%" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
+        <input style="float:left;width:3.5%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
         <input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
         <input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
       </div>
@@ -255,7 +259,7 @@
        <input style="float:right;width:5%;text-align:center;background-color:#ddc497;" type="submit" value="?">
        <input style="float:right;width:32%" type="text" name="Search" value="Search">
        </div> -->
-      <iframe id="textView" src="transcription/trsc_001.txt" width="100%" height="400px"></iframe>
+      <iframe id="textView" style="font-family:arial;" src="transcription/trsc_001.txt" width="100%" height="400px"></iframe>
     </viewRight>
     
   </body>
