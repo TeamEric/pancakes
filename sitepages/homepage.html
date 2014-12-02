@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Compendium Theologica Veritatis</title>
   </head>
-  <body>
+  <body onresize=getSize()>
     <div style="height:10%"><!--background-color:#c3c3cf;border:1pt solid #222222;border-radius:5pt"-->
       <form action="chapter_select.php" method="post">
 				<select style="position:absolute;top:15pt;left:2%;width:10%">
@@ -21,7 +21,7 @@
       </form>
       	<form style="position:absolute;text-align:right;top:15pt;left:50%;width:48%" action="search_page.php">
       	<input style="width:20%" type="text" name="Search" placeholder="Search">
-      	<input type="submit" value="?">
+		<input type="submit" value="?">
       </form>
       <h1 style="position:relative;top:6pt; color:#000000; text-align:top; width:10%; left:15%; width:70%; text-align:center;">
         COMPENDIUM THEOLOGICA VERITATIS
@@ -40,6 +40,7 @@
 		border-radius: 5pt;
 		box-shadow: 0 0 1px 1px #888;
         padding:1%;
+		id:"left";
         overflow:auto;
       }
     viewRight {
@@ -52,7 +53,20 @@
 	  border:1px solid #c3c3cf;
 	  border-radius: 5pt;
 	  box-shadow: 0 0 1px 1px #888;
+	  id:"right";
       padding:1%;
+    }
+	viewImage {
+      line-height:30px;
+      height:window.outerHeight px;
+      width:100%;
+      float:left;
+	  left:2.5%;
+      <!--border:1pt solid #222222;-->
+	  border:1px solid #c3c3cf;
+	  border-radius: 2pt;
+	  box-shadow: 0 0 1px 1px #888;
+	  overflow:auto;
     }
     iframe{
       border:hidden;
@@ -79,6 +93,13 @@
         return false;
       }
     }
+	function getHeight() {
+		var h = window.innerHeight;
+		document.getElementById("demo").innerHTML = "Width: " + w + " Heigth: " + h;
+		var viewLeft=getElementById("left");
+		var leftStyle=viewLeft.style;
+		leftStyle["height"]=h;
+	}
     function nextImage() {
       //store the element in var image
       var image = document.getElementById('page');
@@ -221,8 +242,8 @@
     function zoomIn(){
       var image=document.getElementById('page');
       var imgStyle=image.style;
-			var width=imgStyle["width"];
-			var num=parseFloat(width.substring(0,width.indexOf("%")))+10;
+	  var width=imgStyle["width"];
+	  var num=parseFloat(width.substring(0,width.indexOf("%")))+10;
 			if(num<1001){
 				imgStyle["width"]=num+"%";
 			}
@@ -244,24 +265,24 @@
   </script>
     
     <viewLeft>
-      <div class="rollovericons">
-        <!-- <input style="float:left;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
-        <input style="float:left;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">"> -->
-		<input style="float:left;width:3.5%" onclick="prevImage()" type="image" src="prev3.gif">
-        <input style="float:left;width:3.5%" onclick="nextImage()" type="image" src="next3.gif">
-		<!-- <input style="float:left;width:3.5%" onclick="prevImage()" type="image" src="prev2.gif">
-        <input style="float:left;width:3.5%" onclick="nextImage()" type="image" src="next2.gif"> -->
-        <input style="float:left;width:3.5%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
-        <input style="float:left;width:2.8%" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
-        <input style="float:left;width:3.5%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-        <input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
-        <input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
-      </div>
-      <br>
-      <div>
-        <!--img id="page" alt="001" src="../img/001.jpg" style="width:100%;border:1pt solid black"></img-->
-		<img id="page" alt="001" src="../img/001.jpg" style="width:100%;box-shadow: 0 0 1px 1px #666;"></img>
-      </div>
+     	  <div class="rollovericons">
+			<!-- <input style="float:left;text-align:center;width:5%" onclick="prevImage()" type="Submit" value="<">
+			<input style="float:left;text-align:center;width:5%" onclick="nextImage()" type="Submit" value=">"> -->
+			<input style="float:left;width:3.5%" onclick="prevImage()" type="image" src="prev3.gif">
+			<input style="float:left;width:3.5%" onclick="nextImage()" type="image" src="next3.gif">
+			<!-- <input style="float:left;width:3.5%" onclick="prevImage()" type="image" src="prev2.gif">
+			<input style="float:left;width:3.5%" onclick="nextImage()" type="image" src="next2.gif"> -->
+			<input style="float:left;width:3.5%" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+			<input style="float:left;width:2.8%" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
+			<input style="float:left;width:3.5%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+			<input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go to">
+			<input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
+		  </div>
+		  <br>
+	   <viewImage>	  
+		  <!--img id="page" alt="001" src="../img/001.jpg" style="width:100%;border:1pt solid black"></img-->
+			<img id="page" alt="001" src="../img/001.jpg" style="width:100%;box-shadow: 0 0 1px 1px #666;"></img>
+	   </viewImage>
     </viewLeft>
     <viewRight>
       <div>
