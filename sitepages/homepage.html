@@ -69,11 +69,11 @@
 	</style>    
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
-			<input style="float:left;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
-			<input style="float:left;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
-			<input style="float:left;width:15pt" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+		<input style="float:left;width:15pt" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input style="float:left;width:12pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input style="float:left;width:15pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+			<input style="float:left;width:15pt;position:relative;left:38%;" onclick="prevImage()" type="image" src="prev3.gif">
+			<input style="float:left;width:15pt;position:relative;left:40%;" onclick="nextImage()" type="image" src="next3.gif">
 			<input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go">
 			<input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
 		</div>
@@ -86,8 +86,8 @@
 		<div>
 			<div>
 			<div class="rollovericons" id="buttonsR">
-				<input style="float:left;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
-				<input style="float:left;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
+				<input style="float:left;position:relative;left:46%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
+				<input style="float:left;position:relative;left:48%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
 				<input style="float:right;text-align:center" onclick="goToPage()" type="Submit" value="Go">
 				<input style="float:right;width:9%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
 			</div>
