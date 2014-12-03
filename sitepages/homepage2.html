@@ -6,19 +6,7 @@
 </head>
 <body onresize="resize_page()">
 	<div style="height:10%">
-		<form action="chapter_select.php" method="post">
-			<select style="position:absolute;top:20pt;left:2%;width:10%">
-				<option value="ThisShouldNotBeDone" disabled selected = "selected">
-					Select Chapter
-				</option>
-				<option value="heading1" disabled> Heading 1</option>
-				<option value="Chapter 1">Chapter 1</option>
-				<option value="Chapter 2">Chapter 2</option>
-				<option value="heading1" disabled> Heading 2</option>
-				<option value="Chapter 3">Chapter 3</option>
-				<option value="Chapter 4">Chapter 4</option>
-			</select>
-		</form>
+		<input style="position:absolute;text-align:canter;top:19pt;left:2%;" onclick="pop_up()" type="Submit" value="MENU">
 		<form style="position:absolute;text-align:right;top:19pt;left:50%;width:48%" action="search_page.php">
 			<input style="width:20%" type="text" name="Search" placeholder="Search"><!-- 
 			<input style="float:right;width:15pt;position:relative;top:1pt;left:5pt" onclick="goToPage()" type="image" src="search.gif"> -->
@@ -29,6 +17,21 @@
 		<input style="position:relative;top:-5pt;left:32.5%;width:35%;height:100%" type="image" src="title.gif">
 	</div>
 	<style>
+	iconMenu {
+		position:absolute;
+		z-index:2;
+		left:2%;
+		top:34pt;
+		height:75%;
+		width:75%;
+		line-height:30px;
+		background-color:#eeeeee;
+		border:1px solid black;
+		border-radius: 3pt;
+		overflow:auto;
+		padding:1%;
+		visibility:hidden;
+	}
 	viewLeft {
 		line-height:30px;
 		background-color:#e3e3e3;
@@ -65,7 +68,21 @@
 	.rollovericons input{
 		margin: 2pt;
 	}
-	</style>    
+	</style>  
+	<iconMenu id="menu">
+		<img id="icon" alt="001" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
+		<img id="icon" alt="002" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
+		<img id="icon" alt="003" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
+		<img id="icon" alt="004" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
+		<img id="icon" alt="005" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
+		<img id="icon" alt="006" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+		<img id="icon" alt="001" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
+		<img id="icon" alt="002" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
+		<img id="icon" alt="003" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
+		<img id="icon" alt="004" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
+		<img id="icon" alt="005" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
+		<img id="icon" alt="006" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+	</iconMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
 			<input style="float:left;width:15pt;position:relative;left:45%;" onclick="prevImage()" type="image" src="prev3.gif">
@@ -172,6 +189,15 @@
 		}
 		resize_page();
 	}
+	function pop_up(){
+		if(document.getElementById("menu").style.visibility == "hidden"){
+			document.getElementById("menu").style.visibility = "visible";
+		}
+		else{
+			document.getElementById("menu").style.visibility = "hidden";
+		}
+	}
+	pop_up();
 	function nextImage() {
 		//store the element in var image
 		var image = document.getElementById('page');
