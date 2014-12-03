@@ -5,23 +5,21 @@
 	<title>Compendium Theologica Veritatis</title>
 </head>
 <body onresize="resize_page()">
-	<div style="height:10%">
-		<input style="position:absolute;top:19pt;left:5%;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
-		<form style="position:absolute;text-align:right;top:19pt;left:50%;width:48%" action="search_page.php">
-			<input style="width:20%" type="text" name="Search" placeholder="Search"><!-- 
-			<input style="float:right;width:15pt;position:relative;top:1pt;left:5pt" onclick="goToPage()" type="image" src="search.gif"> -->
-			<!--input style="float:right;width:15pt;position:relative;top:-2pt;left:5pt" onclick="goToPage()" type="image" src="search1.gif"--> 
+	<div style="height:42pt">
+		<input style="position:absolute;top:16pt;left:20pt;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
+		<input id="toggle" style="position:absolute;left:80pt;top:15pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
+		<input style="position:absolute;top:0pt;left:32.5%;width:35%;" type="image" src="title.gif">
+		<form style="position:absolute;text-align:right;top:16pt;left:50%;width:48%" action="search_page.php">
+			<input style="width:20%" type="text" name="Search" placeholder="Search">
 			<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="goToPage()" type="image" src="search2.gif">
 		</form>
-		<input id="toggle" style="position:absolute;left:12%;top:18pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
-		<input style="position:relative;top:-5pt;left:32.5%;width:35%;height:100%" type="image" src="title.gif">
 	</div>
 	<style>
 	iconMenu {
 		position:absolute;
 		z-index:2;
-		left:5%;
-		top:34pt;
+		left:20pt;
+		top:32pt;
 		height:75%;
 		width:75%;
 		line-height:30px;
@@ -55,7 +53,7 @@
 	}
 	viewImage {
 		line-height:30px;
-		height:95%;
+		height:94.5%;
 		width:100%;
 		float:left;
 		left:2.5%;
@@ -70,27 +68,33 @@
 	}
 	</style>  
 	<iconMenu id="menu">
-		<img id="icon" alt="001" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
-		<img id="icon" alt="002" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		<img id="icon" alt="003" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
-		<img id="icon" alt="004" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
-		<img id="icon" alt="005" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
-		<img id="icon" alt="006" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
-		<img id="icon" alt="001" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
-		<img id="icon" alt="002" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		<img id="icon" alt="003" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
-		<img id="icon" alt="004" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
-		<img id="icon" alt="005" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
-		<img id="icon" alt="006" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+		<img id="icon" alt="001" onclick="open("001")" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
+		<img id="icon" alt="002" onclick="open()" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
+		<img id="icon" alt="003" onclick="open()" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
+		<img id="icon" alt="004" onclick="open()" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
+		<img id="icon" alt="005" onclick="open()" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
+		<img id="icon" alt="006" onclick="open()" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+		<img id="icon" alt="001" onclick="open()" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
+		<img id="icon" alt="002" onclick="open()" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
+		<img id="icon" alt="003" onclick="open()" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
+		<img id="icon" alt="004" onclick="open()" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
+		<img id="icon" alt="005" onclick="open()" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
+		<img id="icon" alt="006" onclick="open()" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+		<img id="icon" alt="001" onclick="open()" src="../icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
+		<img id="icon" alt="002" onclick="open()" src="../icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
+		<img id="icon" alt="003" onclick="open()" src="../icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
+		<img id="icon" alt="004" onclick="open()" src="../icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
+		<img id="icon" alt="005" onclick="open()" src="../icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
+		<img id="icon" alt="006" onclick="open()" src="../icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
 	</iconMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
 			<input style="float:left;width:15pt;position:relative;left:45%;" onclick="prevImage()" type="image" src="prev3.gif">
 			<input style="float:left;width:15pt;position:relative;left:46%;" onclick="nextImage()" type="image" src="next3.gif">
-			<input style="float:left;width:15pt;position:absolute;left:4%;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
-			<input style="float:left;width:12pt;position:relative;left:1%" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
-			<input style="float:left;width:15pt;position:relative;left:1%" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input style="float:right;width:15pt;position:relative;top:1pt;left:5pt" onclick="goToPage()" type="image" src="next2.gif">
+			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+			<input style="float:left;width:12pt;position:absolute;left:35pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
+			<input style="float:left;width:15pt;position:absolute;left:51.5pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+			<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToPage()" type="image" src="next2.gif">
 			<input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
 		</div>
 		<br>
@@ -104,7 +108,7 @@
 			<div class="rollovericons" id="buttonsR">
 				<input style="float:left;position:relative;left:45%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:left;position:relative;left:46%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
-				<input style="float:right;width:15pt;position:relative;top:1pt;left:5pt" onclick="goToPage()" type="image" src="next2.gif">
+				<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToPage()" type="image" src="next2.gif">
 				<input style="float:right;width:9%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
 			</div>
 			<br>
@@ -136,10 +140,10 @@
 		}
 	}
 	function resize_page(){
-		document.getElementById("left").style.height = String(window.innerHeight-110) + "px";
-		document.getElementById("right").style.height = String(window.innerHeight-110) + "px";
+		document.getElementById("left").style.height = String(window.innerHeight-100) + "px";
+		document.getElementById("right").style.height = String(window.innerHeight-100) + "px";
 		if(document.getElementById("textView").style.height!="0%"){
-			document.getElementById("textView").style.height = String(window.innerHeight-165) + "px";
+			document.getElementById("textView").style.height = String(window.innerHeight-160) + "px";
 		}
 	}
 	resize_page();
