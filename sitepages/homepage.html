@@ -141,8 +141,17 @@
 		}
 	}
 	function edit(){
-		document.getElementById("modify").value = "Save";
-		document.getElementById("modify").onclick = "save()";
+		if(document.getElementById("modify").value=="Save"){
+			document.getElementById("modify").value="Edit";
+			document.getElementById("textView").style.visibility="visible";
+			
+		}
+		else if(document.getElementById("modify").value=="Edit"){
+			document.getElementById("modify").value="Save";
+			document.getElementById("textView").style.visibility="hidden";
+		}
+		
+		
 	}
 	function resize_page(){
 		document.getElementById("left").style.height = String(window.innerHeight-100) + "px";
