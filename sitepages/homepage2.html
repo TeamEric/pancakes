@@ -8,7 +8,7 @@
 	<div style="height:42pt">
 		<input style="position:absolute;top:16pt;left:20pt;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
 		<input id="toggle" style="position:absolute;left:80pt;top:15pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
-		<input style="position:absolute;top:0pt;left:32.5%;width:35%;" type="image" src="title.gif">
+		<img style="position:absolute;top:0pt;left:32.5%;width:35%;" type="image" src="title.gif">
 		<form style="position:absolute;text-align:right;top:16pt;left:50%;width:48%" action="search_page.php">
 			<input style="width:20%" type="text" name="Search" placeholder="Search">
 			<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="goToPage()" type="image" src="search2.gif">
@@ -94,8 +94,8 @@
 			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input style="float:left;width:12pt;position:absolute;left:35pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input style="float:left;width:15pt;position:absolute;left:51.5pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToPage()" type="image" src="next2.gif">
-			<input style="float:right;width:10%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
+			<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="image" src="next2.gif">
+			<input style="float:right;width:10%" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="page#">
 		</div>
 		<br>
 		<viewImage id="image">
@@ -108,8 +108,8 @@
 			<div class="rollovericons" id="buttonsR">
 				<input style="float:left;position:relative;left:45%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:left;position:relative;left:46%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
-				<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToPage()" type="image" src="next2.gif">
-				<input style="float:right;width:9%" type="text" id="pagen" name="Search" onkeydown="if (event.keyCode == 13) goToPage()" placeholder="page#">
+				<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="image" src="next2.gif">
+				<input style="float:right;width:9%" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="page#">
 			</div>
 			<br>
 			<div id="textButtons">
@@ -326,9 +326,12 @@
 		}
 	}
     
+	//DEPRECIATED FUNCTION
+	//DO NOT USE
+	//Use "goToNum(arg)" instead.
 	function goToPage(){
 		var image=document.getElementById('page');
-		var text=document.getElementById('pagen');
+		var text=document.getElementById('pagen_l');
 		var dir="../img/";
 		var ext=".jpg";
 		var data=String(text.value);
@@ -338,6 +341,26 @@
 			image.alt=data;
 			nextText();
 			zoomDef();
+		}
+	}
+	
+	//HIGHLY ADAPTED from goToPage()
+	//expects "num" to be a string with just the page number.
+	//	typically: document.getElementById('pagen_l').value
+	//	or id='pagen_r'.
+	function goToNum(num){
+		var image=document.getElementById('page');
+		var dir="../img/";
+		var ext=".jpg";
+		var data=String(num);
+		if(!(parseFloat(data)<0)&&!(parseFloat(data)>900)){
+			while(data.length<3)data="0"+data;
+			image.src=String(dir+data+ext);
+			image.alt=data;
+			nextText();
+			zoomDef();
+			document.getElementById('pagen_l').value="";
+			document.getElementById('pagen_r').value="";
 		}
 	}
     
