@@ -2,7 +2,7 @@
 <html style="background-color:#f7f7f7;">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Compendium Theologica Veritatis</title>
+	<title>Compendium Theologicae Veritatis</title>
 </head>
 <body onresize="resize_page()">
 	<div style="height:42pt">
@@ -94,8 +94,8 @@
 			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input style="float:left;width:12pt;position:absolute;left:35pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input style="float:left;width:15pt;position:absolute;left:51.5pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="image" src="next2.gif">
-			<input style="float:right;width:10%" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="page#">
+			<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
+			<input style="float:right;width:20pt" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="page">
 		</div>
 		<br>
 		<viewImage id="image">
@@ -109,8 +109,8 @@
 				<input id="modify" style="float:left;position:relative;width:10%;" onclick="edit()" type="submit" value="Edit">
 				<input style="float:left;position:relative;left:36%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:left;position:relative;left:37%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
-				<input style="float:right;width:15pt;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="image" src="next2.gif">
-				<input style="float:right;width:9%" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="page#">
+				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
+				<input style="float:right;width:20pt" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="page">
 			</div>
 			<br>
 			<div id="textButtons">
