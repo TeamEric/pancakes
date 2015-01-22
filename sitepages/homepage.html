@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Compendium Theologicae Veritatis</title>
 </head>
-<body onresize="resize_page()">
+<body onresize="resize_page()" style="min-width:600px">
 	<div style="height:42pt">
 		<input style="position:absolute;top:16pt;left:20pt;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
 		<input id="toggle" style="position:absolute;left:80pt;top:15pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
@@ -120,6 +120,7 @@
 			</div>
 		</div>
 		<iframe id="textView" style="font-family:arial" src="transcription/trsc_001.txt" width="100%"></iframe>
+		<textarea id="editMode" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
 	</viewRight>
 	<script>
 	function UrlExists(url)
@@ -143,12 +144,22 @@
 	function edit(){
 		if(document.getElementById("modify").value=="Save"){
 			document.getElementById("modify").value="Edit";
-			document.getElementById("textView").style.visibility="visible";
+			document.getElementById("textView").style.width="100%";
+			document.getElementById("editMode").style.height="0%";
+			document.getElementById("editMode").style.width="0%";
+			document.getElementById("editMode").style.visibility="hidden";
+			document.getElementById("editMode").style.position="absolute";
 			
 		}
 		else if(document.getElementById("modify").value=="Edit"){
 			document.getElementById("modify").value="Save";
-			document.getElementById("textView").style.visibility="hidden";
+			document.getElementById("textView").style.width="0%";
+			document.getElementById("editMode").style.position="relative";
+			document.getElementById("editMode").style.width="95%";
+			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
+			document.getElementById("editMode").style.visibility="visible";	
+			var text = document.getElementById("textView").value;
+			document.getElementById("editMode").value=text;
 		}
 		
 		
@@ -158,6 +169,7 @@
 		document.getElementById("right").style.height = String(window.innerHeight-100) + "px";
 		if(document.getElementById("textView").style.height!="0%"){
 			document.getElementById("textView").style.height = String(window.innerHeight-160) + "px";
+			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;			
 		}
 	}
 	resize_page();
