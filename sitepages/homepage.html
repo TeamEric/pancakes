@@ -149,6 +149,8 @@
 			document.getElementById("editMode").style.width="0%";
 			document.getElementById("editMode").style.visibility="hidden";
 			document.getElementById("editMode").style.position="absolute";
+			//this is where we have to implement php stuff. That's for later.
+			//bummer.
 			
 		}
 		else if(document.getElementById("modify").value=="Edit"){
@@ -158,8 +160,16 @@
 			document.getElementById("editMode").style.width="95%";
 			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
 			document.getElementById("editMode").style.visibility="visible";	
-			var text = document.getElementById("textView").value;
-			document.getElementById("editMode").value=text;
+			
+			var client = new XMLHttpRequest();
+			client.open('GET', document.getElementById("textView").src);
+			client.onreadystatechange = function() {
+			  //alert(client.responseText);
+			  document.getElementById("editMode").value=client.responseText;
+			}
+			client.send();
+			//var text = document.getElementById("textView").src;
+			//document.getElementById("editMode").value=client;
 		}
 		
 		
