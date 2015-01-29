@@ -108,7 +108,7 @@
 			<div>
 			<div class="rollovericons" id="buttonsR">
 				<input id="modify" style="float:left;position:relative;width:10%;" onclick="edit()" type="submit" value="Edit">
-				<input class="load" id="load" style="float:left;position:relative;width:10%;"  type="submit" value="Load">				
+				<!--input class="load" id="load" style="float:left;position:relative;width:10%;"  type="submit" value="Load"-->				
 				<input style="float:left;position:relative;left:36%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:left;position:relative;left:37%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
 				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
@@ -124,6 +124,7 @@
 		<iframe id="textView" style="font-family:arial" src="transcription/trsc_001.txt" width="100%"></iframe>
 		<textarea id="editMode" src="" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
 	</viewRight>
+	
 	<script src=jquery.js>
 		function loadText(){
 			alert("loadText() is called");
@@ -141,6 +142,7 @@
 		    //});
 		//}); 
 	</script>
+	
 	<script>
 		function UrlExists(url)
 	{
