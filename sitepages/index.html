@@ -2,7 +2,7 @@
 <html style="background-color:#f7f7f7;">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script scr=jquery.js></script>
+	<script src=jquery.js></script>
 	<title>Compendium Theologicae Veritatis</title>
 </head>
 <body onresize="resize_page()" style="min-width:600px">
@@ -108,7 +108,7 @@
 			<div>
 			<div class="rollovericons" id="buttonsR">
 				<input id="modify" style="float:left;position:relative;width:10%;" onclick="edit()" type="submit" value="Edit">
-				<input id="load" style="float:left;position:relative;width:10%;" onclick="cow()" type="submit" value="Load">				
+				<input class="load" id="load" style="float:left;position:relative;width:10%;"  type="submit" value="Load">				
 				<input style="float:left;position:relative;left:36%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:left;position:relative;left:37%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
 				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
@@ -122,29 +122,27 @@
 			</div>
 		</div>
 		<iframe id="textView" style="font-family:arial" src="transcription/trsc_001.txt" width="100%"></iframe>
-		<textarea id="editMode" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
+		<textarea id="editMode" src="" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
 	</viewRight>
-	<script>
-		function cow(){
-			$(".editMode").load(document.getElementById("textView").src);
-			alert("i am a cow");
+	<script src=jquery.js>
+		function loadText(){
+			alert("loadText() is called");
+			var link = document.getElementById("textView").src;
+			jQuery.get(link, function(data) {
+				alert(data);
+			});
 		}
-		/**$(document).ready(function() {
-		   $("#load").click(function() {
-			   /**ajax({
-				   url : transcription/trsc_001.txt//document.getElementById("textView").src,
-				   dataType: "text",
-				   success : function (data) {
-					   $("#editMode").text(data);
-				   }
-				   
-			   });
-			   alert("bob, for all i care");
-		   });
-		});**/ 
+		//$(document).ready(function() {
+		    //$("#load").click(function() {
+			//	loadText();
+				$('.load').on('click', loadText());
+				 // OR //
+				$('.load').click(loadText());
+		    //});
+		//}); 
 	</script>
 	<script>
-	function UrlExists(url)
+		function UrlExists(url)
 	{
 		var http = new XMLHttpRequest();
 		http.open('HEAD', url, false);
@@ -162,10 +160,36 @@
 			return false;
 		}
 	}
+	
+	function saveText(){
+	
+	}
+	
+	function loadText(){
+		var pageExecute = {
+
+		fileContents:"Null",
+		pagePrefix:"Null",
+		slides:"Null",
+
+		init: function () {
+			$.ajax({
+				url: document.getElementById("textView").src,
+				async: false,
+				success: function (data){
+					pageExecute.fileContents = data;
+				}
+			});
+			}
+		};
+		alert(pageExecute.fileContents);
+	}
+	
 	var visible = 0;
 	
 	function edit(){
 		if(document.getElementById("modify").value=="Save"){
+			saveText();
 			document.getElementById("modify").value="Edit";
 			document.getElementById("textView").style.width="100%";
 			document.getElementById("editMode").style.height="0%";
@@ -173,8 +197,6 @@
 			document.getElementById("editMode").style.visibility="hidden";
 			document.getElementById("editMode").style.position="absolute";
 			visible = 0;
-			//this is where we have to implement php stuff. That's for later.
-			//bummer.
 		}
 		else if(document.getElementById("modify").value=="Edit"){
 			document.getElementById("modify").value="Save";
@@ -184,16 +206,7 @@
 			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
 			document.getElementById("editMode").style.visibility="visible";	
 			visible = 1;
-			
-			var client = new XMLHttpRequest();
-			client.open('GET', document.getElementById("textView").src);
-			client.onreadystatechange = function() {
-			  //alert(client.responseText);
-			  document.getElementById("editMode").value=client.responseText;
-			}
-			client.send();
-			//var text = document.getElementById("textView").src;
-			//document.getElementById("editMode").value=client;
+			loadText();
 		}
 		
 		
