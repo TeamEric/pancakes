@@ -126,7 +126,7 @@
 	</viewRight>
 	
 	
-	<?php
+	<!--?php
                function Read() {
                    $file = "transcription/trsc_001.txt";
                    $fp = fopen($file, "r");
@@ -146,17 +146,17 @@
                }
         ?>
 
-        <?php
+        <!?php
         if ($_POST["submit_check"]){
             Write();
         };
         ?>      
 
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-        <textarea width="400px" height="400px" name="tekst"><?php Read(); ?></textarea><br>
+        <form action="<!?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+        <textarea width="400px" height="400px" name="tekst"><!?php Read(); ?></textarea><br>
         <input type="submit" name="submit" value="Update text">
         <input type="hidden" name="submit_check" value="1">
-        </form>
+        </form-->
 
 	
 	<!--<script src=jquery.js>
@@ -198,41 +198,49 @@
 	}
 	
 	function saveText(){
-	
+		$.ajax({
+			type: 'POST',
+			url: "php.php",
+			//async: false,
+			data: {data: document.getElementById("editMode").value,
+				   path: document.getElementById("textView").src},
+			success: callMeMaybe()
+		});
 	}
 	
 	function loadText(){
-		var pageExecute = {
-
-		fileContents:"Null",
-		pagePrefix:"Null",
-		slides:"Null",
-
-		init: function () {
-			$.ajax({
-				url: document.getElementById("textView").src,
-				async: false,
-				success: function (data){
-					pageExecute.fileContents = data;
-				}
-			});
+		$.ajax({
+			type: 'POST',
+			url: document.getElementById("textView").src,
+			dataType: 'text',
+			success: function(data){
+				document.getElementById("editMode").value = data;
 			}
-		};
-		alert(pageExecute.fileContents);
+		});
 	}
 	
 	var visible = 0;
 	
-	function edit(){
-		if(document.getElementById("modify").value=="Save"){
-			saveText();
-			document.getElementById("modify").value="Edit";
+	function callMeMaybe(){
+		document.getElementById("modify").value="Edit";
 			document.getElementById("textView").style.width="100%";
 			document.getElementById("editMode").style.height="0%";
 			document.getElementById("editMode").style.width="0%";
 			document.getElementById("editMode").style.visibility="hidden";
 			document.getElementById("editMode").style.position="absolute";
 			visible = 0;
+	}
+	
+	function edit(){
+		if(document.getElementById("modify").value=="Save"){
+			saveText();
+			/*document.getElementById("modify").value="Edit";
+			document.getElementById("textView").style.width="100%";
+			document.getElementById("editMode").style.height="0%";
+			document.getElementById("editMode").style.width="0%";
+			document.getElementById("editMode").style.visibility="hidden";
+			document.getElementById("editMode").style.position="absolute";
+			visible = 0;*/
 		}
 		else if(document.getElementById("modify").value=="Edit"){
 			document.getElementById("modify").value="Save";
