@@ -125,58 +125,6 @@
 		<textarea id="editMode" src="" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
 	</viewRight>
 	
-	
-	<!--?php
-               function Read() {
-                   $file = "transcription/trsc_001.txt";
-                   $fp = fopen($file, "r");
-                   while(!feof($fp)) {
-                       $data = fgets($fp, filesize($file));
-                       echo "$data <br>";
-                   }
-                   fclose($fp);
-               }
-
-               function Write() {
-                   $file = "tester.txt";
-                   $fp = fopen($file, "w");
-                   $data = $_POST["tekst"];
-                   fwrite($fp, $data);
-                   fclose($fp);
-               }
-        ?>
-
-        <!?php
-        if ($_POST["submit_check"]){
-            Write();
-        };
-        ?>      
-
-        <form action="<!?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-        <textarea width="400px" height="400px" name="tekst"><!?php Read(); ?></textarea><br>
-        <input type="submit" name="submit" value="Update text">
-        <input type="hidden" name="submit_check" value="1">
-        </form-->
-
-	
-	<!--<script src=jquery.js>
-		function loadText(){
-			alert("loadText() is called");
-			var link = document.getElementById("textView").src;
-			jQuery.get(link, function(data) {
-				alert(data);
-			});
-		}
-		//$(document).ready(function() {
-		    //$("#load").click(function() {
-			//	loadText();
-				$('.load').on('click', loadText());
-				 // OR //
-				$('.load').click(loadText());
-		    //});
-		//}); 
-	</script-->
-	
 	<script>
 		function UrlExists(url)
 	{
@@ -197,14 +145,18 @@
 		}
 	}
 	
+	var login = 0;
+	
 	function saveText(){
+		var s = document.getElementById("textView").src;
+		var pos=s.search("website");
+		pos+=8;
 		$.ajax({
 			type: 'POST',
 			url: "php.php",
-			//async: false,
 			data: {data: document.getElementById("editMode").value,
-				   path: document.getElementById("textView").src},
-			success: callMeMaybe()
+				   url: s.substring(pos)},
+			success: reloadPage()
 		});
 	}
 	
@@ -221,39 +173,44 @@
 	
 	var visible = 0;
 	
-	function callMeMaybe(){
+	function reloadPage(){
+		document.getElementById("textView").src=document.getElementById("textView").src;
 		document.getElementById("modify").value="Edit";
-			document.getElementById("textView").style.width="100%";
-			document.getElementById("editMode").style.height="0%";
-			document.getElementById("editMode").style.width="0%";
-			document.getElementById("editMode").style.visibility="hidden";
-			document.getElementById("editMode").style.position="absolute";
-			visible = 0;
+		document.getElementById("textView").style.width="100%";
+		document.getElementById("editMode").style.height="0%";
+		document.getElementById("editMode").style.width="0%";
+		document.getElementById("editMode").style.visibility="hidden";
+		document.getElementById("editMode").style.position="absolute";
+		visible = 0;
+	}
+	
+	function password(){
+		var pw = prompt("Enter Passcode:");
+		if(pw == "1234"){
+			login = 1;
+			edit();
+		}
 	}
 	
 	function edit(){
 		if(document.getElementById("modify").value=="Save"){
 			saveText();
-			/*document.getElementById("modify").value="Edit";
-			document.getElementById("textView").style.width="100%";
-			document.getElementById("editMode").style.height="0%";
-			document.getElementById("editMode").style.width="0%";
-			document.getElementById("editMode").style.visibility="hidden";
-			document.getElementById("editMode").style.position="absolute";
-			visible = 0;*/
 		}
 		else if(document.getElementById("modify").value=="Edit"){
-			document.getElementById("modify").value="Save";
-			document.getElementById("textView").style.width="0%";
-			document.getElementById("editMode").style.position="relative";
-			document.getElementById("editMode").style.width="95%";
-			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
-			document.getElementById("editMode").style.visibility="visible";	
-			visible = 1;
-			loadText();
-		}
-		
-		
+			if(login==0){
+				password();
+			}
+			else if(login==1){
+				document.getElementById("modify").value="Save";
+				document.getElementById("textView").style.width="0%";
+				document.getElementById("editMode").style.position="relative";
+				document.getElementById("editMode").style.width="95%";
+				document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
+				document.getElementById("editMode").style.visibility="visible";	
+				visible = 1;
+				loadText();
+			}
+		}		
 	}
 	function resize_page(){
 		document.getElementById("left").style.height = String(window.innerHeight-100) + "px";
@@ -332,6 +289,7 @@
 	}
 	pop_up();
 	function nextImage() {
+		saveText();
 		//store the element in var image
 		var image = document.getElementById('page');
 		//get directory and extension of files
@@ -360,6 +318,7 @@
 		}
 	}
 	function prevImage() {
+		saveText();
 		//store the element in var image
 		var image = document.getElementById('page');
 		//get directory and extension of files
