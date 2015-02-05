@@ -90,11 +90,11 @@
 	</iconMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
-			<input style="float:left;width:15pt;position:relative;left:45%;" onclick="prevImage()" type="image" src="prev3.gif">
-			<input style="float:left;width:15pt;position:relative;left:46%;" onclick="nextImage()" type="image" src="next3.gif">
 			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input style="float:left;width:12pt;position:absolute;left:35pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input style="float:left;width:15pt;position:absolute;left:51.5pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+			<input style="float:right;width:15pt;position:relative;" onclick="nextImage()" type="image" src="next3.gif">
+			<input style="float:right;width:15pt;position:relative;" onclick="prevImage()" type="image" src="prev3.gif">
 			<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
 			<input style="float:right;width:20pt" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="page">
 		</div>
@@ -108,9 +108,8 @@
 			<div>
 			<div class="rollovericons" id="buttonsR">
 				<input id="modify" style="float:left;position:relative;width:10%;" onclick="edit()" type="submit" value="Edit">
-				<!--input class="load" id="load" style="float:left;position:relative;width:10%;"  type="submit" value="Load"-->				
-				<input style="float:left;position:relative;left:36%;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
-				<input style="float:left;position:relative;left:37%;width:15pt" onclick="nextImage()" type="image" src="next3.gif">
+				<input style="float:right;position:relative;width:15pt" onclick="nextImage()" type="image" src="next3.gif">			
+				<input style="float:right;position:relative;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
 				<input style="float:right;width:20pt" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="page">
 			</div>
@@ -441,7 +440,7 @@
 		var dir="img/";
 		var ext=".jpg";
 		var data=String(num);
-		if(!(parseFloat(data)<0)&&!(parseFloat(data)>900)){
+		if(parseFloat(data)>=0&&parseFloat(data)<=300){
 			while(data.length<3)data="0"+data;
 			image.src=String(dir+data+ext);
 			image.alt=data;
