@@ -71,22 +71,7 @@
 	<iconMenu id="menu">
 		<img id="icon" alt="001" onclick="open("001")" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
 		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		<img id="icon" alt="003" onclick="open()" src="icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
-		<img id="icon" alt="004" onclick="open()" src="icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
-		<img id="icon" alt="005" onclick="open()" src="icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
-		<img id="icon" alt="006" onclick="open()" src="icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
-		<img id="icon" alt="001" onclick="open()" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
-		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		<img id="icon" alt="003" onclick="open()" src="icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
-		<img id="icon" alt="004" onclick="open()" src="icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
-		<img id="icon" alt="005" onclick="open()" src="icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
-		<img id="icon" alt="006" onclick="open()" src="icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
-		<img id="icon" alt="001" onclick="open()" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
-		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		<img id="icon" alt="003" onclick="open()" src="icons/003.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:10px;"></img>
-		<img id="icon" alt="004" onclick="open()" src="icons/004.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:15px;"></img>
-		<img id="icon" alt="005" onclick="open()" src="icons/005.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:20px;"></img>
-		<img id="icon" alt="006" onclick="open()" src="icons/006.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:25px;"></img>
+
 	</iconMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
@@ -144,6 +129,18 @@
 		}
 	}
 	
+	function loadMenu(){
+		for(var i =0;i<291;i++){
+			
+		}
+	}
+	
+	loadMenu();
+	
+	function open(){
+		
+	}
+	
 	var login = 0;
 	
 	function saveText(){
@@ -192,9 +189,12 @@
 		}
 	}
 	
+	var editing=0;
+	
 	function edit(){
 		if(document.getElementById("modify").value=="Save"){
 			saveText();
+			editing = 0;
 		}
 		else if(document.getElementById("modify").value=="Edit"){
 			if(login==0){
@@ -209,6 +209,7 @@
 				document.getElementById("editMode").style.visibility="visible";	
 				visible = 1;
 				loadText();
+				editing = 1;
 			}
 		}		
 	}
@@ -289,7 +290,9 @@
 	}
 	pop_up();
 	function nextImage() {
-		saveText();
+		if(editing == 1){
+			saveText();
+		}
 		//store the element in var image
 		var image = document.getElementById('page');
 		//get directory and extension of files
@@ -318,7 +321,9 @@
 		}
 	}
 	function prevImage() {
-		saveText();
+		if(editing == 1){
+			saveText();
+		}
 		//store the element in var image
 		var image = document.getElementById('page');
 		//get directory and extension of files
