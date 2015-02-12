@@ -69,9 +69,10 @@
 	}
 	</style>  
 	<iconMenu id="menu">
+		<!--
 		<img id="icon" alt="001" onclick="open("001")" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
 		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-
+		-->
 	</iconMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
@@ -111,6 +112,32 @@
 	</viewRight>
 	
 	<script>
+	function createMenu() {
+			for (var i = 0;i<292;i++) {
+				var x = document.createElement("IMG");
+				var num = i+"";
+				while (num.length<3) num = "0" + num;
+				
+				x.src = "icons/"+num+".jpg";
+				var z = "width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:" + ((i*5)%30) + "px;";
+				//x.style = z;
+				x.id = "icon";
+				var al = i;
+				//while (al.length < 3) al = "0" + al;
+				x.alt = al;
+				
+				x.style.width = "16%";
+				//x.style.box-shadow = " 0 0 1px 1px #666";
+				x.style.position = "relative";
+				x.style.left = ((i*5+5)%30) + "px";
+				x.onclick = function() {goToNum(this.alt);pop_up();};
+				var y = document.getElementById("menu");
+				y.appendChild(x);
+				console.log('hi');
+			}
+		}
+		createMenu();
+
 		function UrlExists(url)
 	{
 		var http = new XMLHttpRequest();
