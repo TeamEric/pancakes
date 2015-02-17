@@ -10,12 +10,25 @@
 		<input style="position:absolute;top:16pt;left:20pt;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
 		<input id="toggle" style="position:absolute;left:80pt;top:15pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
 		<img style="max-height:48pt;max-width:400pt;position:absolute;top:0pt;left:32.5%;width:35%;" type="image" src="title.gif">
-		<form style="position:absolute;text-align:right;top:16pt;left:50%;width:48%" action="search_page.php">
-			<input style="width:20%" type="text" name="Search" placeholder="Search">
-			<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="goToPage()" type="image" src="search2.gif">
-		</form>
+		<div style="position:absolute;text-align:right;top:16pt;left:50%;width:48%">
+			<input id="searchInput" style="width:20%" type="text" name="Search" placeholder="Search">
+			<input id="searchButton" style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="searchText()" type="image" src="search2.gif">
+		</div>
 	</div>
 	<style>
+	searchMenu{
+		visibility:hidden;
+		position:absolute;
+		right: 2%;
+		z-index:3;
+		max-height:75%;
+		width:25%;
+		background-color:#eeeeee;
+		border:1px solid black;
+		border-radius: 3pt;
+		overflow:auto;
+		padding:1%;
+	}
 	iconMenu {
 		position:absolute;
 		z-index:2;
@@ -74,6 +87,11 @@
 		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
 		-->
 	</iconMenu>
+	<searchMenu id="searchMenu">
+		<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="searchText()" type="image" src="search3.gif">
+		<h3>Results:</h3>
+		<p>No results found.</p>
+	</searchMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
 			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
@@ -113,30 +131,61 @@
 	
 	<script>
 	function createMenu() {
-			for (var i = 0;i<292;i++) {
-				var x = document.createElement("IMG");
-				var num = i+"";
-				while (num.length<3) num = "0" + num;
-				
-				x.src = "icons/"+num+".jpg";
-				var z = "width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:" + ((i*5)%30) + "px;";
-				//x.style = z;
-				x.id = "icon";
-				var al = i;
-				//while (al.length < 3) al = "0" + al;
-				x.alt = al;
-				
-				x.style.width = "16%";
-				//x.style.box-shadow = " 0 0 1px 1px #666";
-				x.style.position = "relative";
-				x.style.left = ((i*5+5)%30) + "px";
-				x.onclick = function() {goToNum(this.alt);pop_up();};
-				var y = document.getElementById("menu");
-				y.appendChild(x);
-				console.log('hi');
-			}
+		for (var i = 0;i<292;i++) {
+			var x = document.createElement("IMG");
+			var num = i+"";
+			while (num.length<3) num = "0" + num;
+			
+			x.src = "icons/"+num+".jpg";
+			var z = "width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:" + ((i*5)%30) + "px;";
+			//x.style = z;
+			x.id = "icon";
+			var al = i;
+			//while (al.length < 3) al = "0" + al;
+			x.alt = al;
+			
+			x.style.width = "16%";
+			//x.style.box-shadow = " 0 0 1px 1px #666";
+			x.style.position = "relative";
+			x.style.left = ((i*5+5)%30) + "px";
+			x.onclick = function() {goToNum(this.alt);pop_up();};
+			var y = document.getElementById("menu");
+			y.appendChild(x);
+			console.log('hi');
 		}
-		createMenu();
+	}
+	
+	createMenu();
+	
+	function searchText(){
+		if(document.getElementById("searchMenu").style.visibility=="visible"){
+			document.getElementById("searchMenu").style.visibility = "hidden";
+		}
+		else{
+			/**var list = {};
+			var i;
+			for(i=0;i<292;i++){
+				var string = 
+				
+				
+				if(string.contains(args)){
+				var firstpart=...+before the query
+				
+					document.getElementById("searchMenu").value.append();
+				}
+			}
+			
+			var j = list.length;
+			var result = list[0];
+			for(i = 1;i<j;i++){
+				result = "," + str(list[i]); 
+			}
+			
+			return result**/
+			//alert("hi");
+			document.getElementById("searchMenu").style.visibility = "visible";
+		}
+	}
 
 		function UrlExists(url)
 	{
@@ -155,18 +204,6 @@
 		else {
 			return false;
 		}
-	}
-	
-	function loadMenu(){
-		for(var i =0;i<291;i++){
-			
-		}
-	}
-	
-	loadMenu();
-	
-	function open(){
-		
 	}
 	
 	var login = 0;
