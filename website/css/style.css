@@ -1,0 +1,67 @@
+<!-- Stylesheet for the Compendium --->
+<!-- As of yet incomplete. Will be modified later. --->
+
+searchMenu{
+	visibility:hidden;
+	position:absolute;
+	right: 2%;
+	z-index:3;
+	max-height:75%;
+	width:25%;
+	background-color:#eeeeee;
+	border:1px solid black;
+	border-radius: 3pt;
+	overflow:auto;
+	padding:1%;
+}
+iconMenu {
+	position:absolute;
+	z-index:2;
+	left:20pt;
+	top:32pt;
+	height:75%;
+	width:75%;
+	line-height:30px;
+	background-color:#eeeeee;
+	border:1px solid black;
+	border-radius: 3pt;
+	overflow:auto;
+	padding:1%;
+	visibility:hidden;
+}
+viewLeft {
+	line-height:30px;
+	background-color:#e3e3e3;
+	width:47.5%;
+	float:left;
+	border:1px solid #e3e3e3;
+	border-radius: 2pt;
+	box-shadow: 0 0 1px 1px #888;
+	padding:1%;
+}
+viewRight {
+	line-height:30px;
+	background-color:#e3e3e3;
+	height:80%;
+	width:47.5%;
+	float:right;
+	border:1px solid #e3e3e3;
+	border-radius: 2pt;
+	box-shadow: 0 0 1px 1px #888;
+	padding:1%;
+}
+viewImage {
+	line-height:30px;
+	height:94.5%;
+	width:100%;
+	float:left;
+	left:2.5%;
+	box-shadow: 0 0 1px 1px #888;
+	overflow:auto;
+}
+iframe{
+	border:hidden;
+}
+.rollovericons input{
+	margin: 2pt;
+}
