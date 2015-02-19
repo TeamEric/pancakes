@@ -14,6 +14,15 @@ searchMenu{
 	overflow:auto;
 	padding:1%;
 }
+.searchResult{
+	text-decoration:underline;
+	color:#00f;
+}
+.searchResult:hover{
+	text-decoration:none;
+	color:#00f;
+	cursor:pointer;
+}
 iconMenu {
 	position:absolute;
 	z-index:2;

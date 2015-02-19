@@ -91,7 +91,12 @@
 	<searchMenu id="searchMenu">
 		<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="searchText()" type="image" src="search3.gif">
 		<h3>Results:</h3>
-		<p>No results found.</p>
+		<!--
+		<div id="searchBody">
+			<p>No results found.</p>
+			<p class="searchResult" onclick="goToNum(22)">Page 22</p>
+		</div>
+		-->
 	</searchMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
@@ -161,29 +166,59 @@
 	function searchText(){
 		if(document.getElementById("searchMenu").style.visibility=="visible"){
 			document.getElementById("searchMenu").style.visibility = "hidden";
+			document.getElementById("searchMenu").removeChild(document.getElementById("searchBody"));
 		}
 		else{
-			/**var list = {};
+			var searchBody=document.createElement("div");
+			searchBody.id="searchBody";
+			document.getElementById("searchMenu").appendChild(searchBody)
+			var searchText = document.getElementById("searchInput").value;
+			var list = [];
 			var i;
 			for(i=0;i<292;i++){
-				var string = 
-				
-				
-				if(string.contains(args)){
-				var firstpart=...+before the query
-				
-					document.getElementById("searchMenu").value.append();
+				var string;
+				var src =document.getElementById("textView").src;
+				src = src.substring(0,src.length-7);
+				var num = i+"";
+				while (num.length<3) num = "0"+ num;
+				src = src + num + ".txt";
+				$.ajax({
+					type: 'POST',
+					url: src,
+					dataType: 'text',
+					success: function(data){
+						string = data;
+					}
+				});
+				var plc =string.search(searchText); 
+				while ( plc != -1) {
+					var temp = searchText.substring(Math.max(0,plc-10),Math.min(searchText.length,plc+10));
+					searchText = searchText.substring(plc);
+					list.push([i,temp]);
 				}
 			}
 			
-			var j = list.length;
-			var result = list[0];
-			for(i = 1;i<j;i++){
-				result = "," + str(list[i]); 
+			
+			
+			if (list.length>0){
+				var j=0;
+				for(j=0;j<list.length;j++){
+					var sr=document.createElement("p");
+					var txt=document.createTextNode("Page " + list[j][0] + ": ..." + list[j][1]) + "...";
+					sr.appendChild(txt);
+					sr.className="searchResult";
+					sr.alt=j;
+					sr.onclick=function() {goToNum(this.alt);searchText();};
+					document.getElementById("searchBody").appendChild(sr);
+				}
+			}
+			else {
+				var sr = document.createElement("p");
+				var txt = document.createTextNode("No Search Results.");
+				sr.appendChild(txt);
+				document.getElementById("searchBody").appendChild(sr);
 			}
 			
-			return result**/
-			//alert("hi");
 			document.getElementById("searchMenu").style.visibility = "visible";
 		}
 	}
