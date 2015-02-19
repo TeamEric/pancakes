@@ -106,7 +106,7 @@
 			<input style="float:right;width:15pt;position:relative;" onclick="nextImage()" type="image" src="next3.gif">
 			<input style="float:right;width:15pt;position:relative;" onclick="prevImage()" type="image" src="prev3.gif">
 			<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
-			<input style="float:right;width:20pt" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="page">
+			<input style="float:right;width:20pt" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="1">
 		</div>
 		<br>
 		<viewImage id="image">
@@ -122,7 +122,7 @@
 				<input style="float:right;position:relative;width:15pt" onclick="nextImage()" type="image" src="next3.gif">			
 				<input style="float:right;position:relative;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
 				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
-				<input style="float:right;width:20pt" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="page">
+				<input style="float:right;width:20pt" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="1">
 			</div>
 			<br>
 			<div id="textButtons">
@@ -136,6 +136,11 @@
 	</viewRight>
 	
 	<script>
+	function placeHolder(num) {
+		document.getElementById("pagen_l").placeholder = num;
+		document.getElementById("pagen_r").placeholder = num;
+		
+	}
 	function createMenu() {
 		for (var i = 0;i<292;i++) {
 			var x = document.createElement("IMG");
@@ -169,6 +174,7 @@
 			document.getElementById("searchMenu").removeChild(document.getElementById("searchBody"));
 		}
 		else{
+			document.getElementById("searchMenu").style.visibility = "visible";
 			var searchBody=document.createElement("div");
 			searchBody.id="searchBody";
 			document.getElementById("searchMenu").appendChild(searchBody)
@@ -185,16 +191,19 @@
 				$.ajax({
 					type: 'POST',
 					url: src,
+					async: false,
 					dataType: 'text',
 					success: function(data){
 						string = data;
 					}
 				});
 				var plc =string.search(searchText); 
-				while ( plc != -1) {
-					var temp = searchText.substring(Math.max(0,plc-10),Math.min(searchText.length,plc+10));
-					searchText = searchText.substring(plc);
+				while ( plc >-1) {
+					console.log(i + "" + plc);
+					var temp = string.substring(Math.max(0,plc-20),Math.min(string.length,plc+20));
+					string = string.substring(plc +string.length);
 					list.push([i,temp]);
+					plc = string.search(searchText);
 				}
 			}
 			
@@ -204,7 +213,7 @@
 				var j=0;
 				for(j=0;j<list.length;j++){
 					var sr=document.createElement("p");
-					var txt=document.createTextNode("Page " + list[j][0] + ": ..." + list[j][1]) + "...";
+					var txt=document.createTextNode("Page " + list[j][0] + ": ..." + list[j][1] + "...");
 					sr.appendChild(txt);
 					sr.className="searchResult";
 					sr.alt=j;
@@ -219,7 +228,6 @@
 				document.getElementById("searchBody").appendChild(sr);
 			}
 			
-			document.getElementById("searchMenu").style.visibility = "visible";
 		}
 	}
 
@@ -424,6 +432,9 @@
 			image.alt = mid2;
 			nextText();
 			zoomDef();
+			var num = parseInt(document.getElementById("pagen_l").placeholder);
+			num +=1;
+			placeHolder(num);
 			//image=document.getElementByID('page');
 		} else {
 			image.src = String(dir+mid+ext);
@@ -455,6 +466,9 @@
 			image.alt = mid2;
 			nextText();
 			zoomDef();
+			var num = parseInt(document.getElementById("pagen_l").placeholder);
+			num -=1;
+			placeHolder(num);
 			//image=document.getElementByID('page');
 		} else {
 			image.src = String(dir+mid+ext);
@@ -563,7 +577,9 @@
 			zoomDef();
 			document.getElementById('pagen_l').value="";
 			document.getElementById('pagen_r').value="";
+			placeHolder(num);
 		}
+		
 	}
     
 	function zoomIn(){
