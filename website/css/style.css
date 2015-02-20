@@ -1,6 +1,82 @@
 <!-- Stylesheet for the Compendium --->
 <!-- As of yet incomplete. Will be modified later. --->
 
+.searchResult{
+	text-decoration:underline;
+	color:#00f;
+}
+.searchResult:hover{
+	text-decoration:none;
+	color:#00f;
+	cursor:pointer;
+}
+
+.toggle{
+	position:absolute;
+	left:80pt;
+	top:15pt;
+	width:40pt;
+}
+.menuIcon{
+	position:absolute;
+	top:16pt;
+	left:20pt;
+	width:40pt;
+}
+.titleImg{
+	max-height:48pt;
+	max-width:400pt;
+	position:absolute;
+	top:0pt;
+	left:32.5%;
+	width:35%;
+}
+.searchContainer{
+	position:absolute;
+	text-align:right;
+	top:16pt;
+	left:50%;
+	width:48%;
+}
+#searchInput{
+	width:20%;
+}
+#searchButton{
+	float:right;
+	width:15pt;
+	position:relative;
+	top:0pt;
+	left:5pt;
+}
+#closeSearchMenu{
+	 float:right;
+	 width:15pt;
+	 position:relative;
+	 top:0pt;
+	 left:5pt;
+}
+#zoomOutButton{
+	float:left;width:15pt;position:absolute;left:15pt;
+}
+#zoomDefButton{
+	float:left;width:12pt;position:absolute;left:35pt;
+}
+#zoomInButton{
+	float:left;width:15pt;position:absolute;left:51.5pt;
+}
+#pageTurn_VL{
+	float:right;width:15pt;position:relative;
+}
+#goToPage_VL{
+	float:right;position:relative;top:1pt;left:1pt;
+}
+#pagen_l{
+	float:right;width:20pt;
+}
+#page{
+	width:100%;box-shadow: 0 0 1px 1px #666;
+}
+
 searchMenu{
 	visibility:hidden;
 	position:absolute;
@@ -13,15 +89,6 @@ searchMenu{
 	border-radius: 3pt;
 	overflow:auto;
 	padding:1%;
-}
-.searchResult{
-	text-decoration:underline;
-	color:#00f;
-}
-.searchResult:hover{
-	text-decoration:none;
-	color:#00f;
-	cursor:pointer;
 }
 iconMenu {
 	position:absolute;

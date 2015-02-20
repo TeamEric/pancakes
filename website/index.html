@@ -5,83 +5,18 @@
 	<script src=jquery.js></script>
 	<title>Compendium Theologicae Veritatis</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body onresize="resize_page()" style="min-width:600px">
 	<div style="height:42pt">
-		<input style="position:absolute;top:16pt;left:20pt;width:40pt" onclick="pop_up()" type="image" src="menu.gif">
-		<input id="toggle" style="position:absolute;left:80pt;top:15pt;width:40pt" onclick="toggle()" type="image" src="left.gif">
-		<img style="max-height:48pt;max-width:400pt;position:absolute;top:0pt;left:32.5%;width:35%;" type="image" src="title.gif">
-		<div style="position:absolute;text-align:right;top:16pt;left:50%;width:48%">
-			<input id="searchInput" style="width:20%" type="text" name="Search" placeholder="Search">
-			<input id="searchButton" style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="searchText()" type="image" src="search2.gif">
+		<input class="menuIcon" onclick="pop_up()" type="image" src="menu.gif">
+		<input class="toggle" id="toggle" onclick="toggle()" type="image" src="left.gif">
+		<img class="titleImg" type="image" src="title.gif">
+		<div class="searchContainer">
+			<input id="searchInput" type="text" name="Search" placeholder="Search">
+			<input id="searchButton" onclick="searchText()" type="image" src="search2.gif">
 		</div>
 	</div>
-	<style>
-	searchMenu{
-		visibility:hidden;
-		position:absolute;
-		right: 2%;
-		z-index:3;
-		max-height:75%;
-		width:25%;
-		background-color:#eeeeee;
-		border:1px solid black;
-		border-radius: 3pt;
-		overflow:auto;
-		padding:1%;
-	}
-	iconMenu {
-		position:absolute;
-		z-index:2;
-		left:20pt;
-		top:32pt;
-		height:75%;
-		width:75%;
-		line-height:30px;
-		background-color:#eeeeee;
-		border:1px solid black;
-		border-radius: 3pt;
-		overflow:auto;
-		padding:1%;
-		visibility:hidden;
-	}
-	viewLeft {
-		line-height:30px;
-		background-color:#e3e3e3;
-		width:47.5%;
-		float:left;
-		border:1px solid #e3e3e3;
-		border-radius: 2pt;
-		box-shadow: 0 0 1px 1px #888;
-		padding:1%;
-	}
-	viewRight {
-		line-height:30px;
-		background-color:#e3e3e3;
-		height:80%;
-		width:47.5%;
-		float:right;
-		border:1px solid #e3e3e3;
-		border-radius: 2pt;
-		box-shadow: 0 0 1px 1px #888;
-		padding:1%;
-	}
-	viewImage {
-		line-height:30px;
-		height:94.5%;
-		width:100%;
-		float:left;
-		left:2.5%;
-		box-shadow: 0 0 1px 1px #888;
-		overflow:auto;
-	}
-	iframe{
-		border:hidden;
-	}
-	.rollovericons input{
-		margin: 2pt;
-	}
-	</style>  
 	<iconMenu id="menu">
 		<!--
 		<img id="icon" alt="001" onclick="open("001")" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
@@ -89,7 +24,7 @@
 		-->
 	</iconMenu>
 	<searchMenu id="searchMenu">
-		<input style="float:right;width:15pt;position:relative;top:0pt;left:5pt" onclick="searchText()" type="image" src="search3.gif">
+		<input id="closeSearchMenu" onclick="searchText()" type="image" src="search3.gif">
 		<h3>Results:</h3>
 		<!--
 		<div id="searchBody">
@@ -100,17 +35,17 @@
 	</searchMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
-			<input style="float:left;width:15pt;position:absolute;left:15pt;" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
-			<input style="float:left;width:12pt;position:absolute;left:35pt" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
-			<input style="float:left;width:15pt;position:absolute;left:51.5pt" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input style="float:right;width:15pt;position:relative;" onclick="nextImage()" type="image" src="next3.gif">
-			<input style="float:right;width:15pt;position:relative;" onclick="prevImage()" type="image" src="prev3.gif">
-			<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
-			<input style="float:right;width:20pt" type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="1">
+			<input id="zoomOutButton" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
+			<input id="zoomDefButton" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
+			<input id="zoomInButton" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
+			<input id="pageTurn_VL" onclick="nextImage()" type="image" src="next3.gif">
+			<input id="pageTurn_VL" onclick="prevImage()" type="image" src="prev3.gif">
+			<input id="goToPage_VL" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
+			<input type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="1">
 		</div>
 		<br>
 		<viewImage id="image">
-			<img id="page" alt="001" src="img/001.jpg" style="width:100%;box-shadow: 0 0 1px 1px #666;"></img>
+			<img id="page" alt="001" src="img/001.jpg"></img>
 		</viewImage>
 	</viewLeft>
 	<viewRight id="right">
@@ -136,6 +71,7 @@
 	</viewRight>
 	
 	<script>
+	zoomDef();
 	function placeHolder(num) {
 		document.getElementById("pagen_l").placeholder = num;
 		document.getElementById("pagen_r").placeholder = num;
@@ -229,26 +165,7 @@
 			}
 			
 		}
-	}
-
-		function UrlExists(url)
-	{
-		var http = new XMLHttpRequest();
-		http.open('HEAD', url, false);
-		http.send();
-		return http.status!=404;
-	}
-	function fileExists(url) {
-		if(url){
-			var req = new XMLHttpRequest();
-			req.open('GET', url, false);
-			req.send();
-			return req.status==200;
-		}
-		else {
-			return false;
-		}
-	}
+	}	
 	
 	var login = 0;
 	
@@ -294,7 +211,7 @@
 		if(pw == "1234"){
 			login = 1;
 			edit();
-			alert("Your changes may not appear immediatly.\nIf your changes don't appear upon saving, toggle between your current view and Transcription/Translation/Notes.");
+			alert("Your changes may not appear immediatly.\n If your changes don't appear upon saving, toggle between your current view and Transcription/Translation/Notes.");
 		}
 	}
 	
@@ -545,6 +462,8 @@
 	//DEPRECIATED FUNCTION
 	//DO NOT USE
 	//Use "goToNum(arg)" instead.
+	//leaving it in... just in case we need it.
+	//For some reason.
 	function goToPage(){
 		var image=document.getElementById('page');
 		var text=document.getElementById('pagen_l');
