@@ -17,6 +17,7 @@ class fileMaker{
 				}
 				PrintStream printOut = new PrintStream(output);
 				printOut.print("Transcription "+i+": nothing to display.");
+				printOut.print("");
 				System.setOut(printOut);
 				System.out.flush();
 				printOut.close();
