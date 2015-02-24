@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
-<body onresize="resize_page()" style="min-width:600px">
-	<div style="height:42pt">
+<body onresize="resize_page()">
+	<div id="topContainer">
 		<input class="menuIcon" onclick="pop_up()" type="image" src="menu.gif">
 		<input class="toggle" id="toggle" onclick="toggle()" type="image" src="left.gif">
 		<img class="titleImg" type="image" src="title.gif">
@@ -38,8 +38,8 @@
 			<input id="zoomOutButton" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input id="zoomDefButton" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input id="zoomInButton" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input id="pageTurn_VL" onclick="nextImage()" type="image" src="next3.gif">
-			<input id="pageTurn_VL" onclick="prevImage()" type="image" src="prev3.gif">
+			<input class="pageTurn_VL" onclick="nextImage()" type="image" src="next3.gif">
+			<input class="pageTurn_VL" onclick="prevImage()" type="image" src="prev3.gif">
 			<input id="goToPage_VL" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
 			<input type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="1">
 		</div>
@@ -52,22 +52,22 @@
 		<div>
 			<div>
 			<div class="rollovericons" id="buttonsR">
-				<input id="modify" style="float:left;position:relative;width:10%;" onclick="edit()" type="submit" value="Edit">
-				<input id="cancel" style="float:left;position:relative;width:10%;visibility:hidden;" onclick="cancelEdit()" type="submit" value="Discard">
-				<input style="float:right;position:relative;width:15pt" onclick="nextImage()" type="image" src="next3.gif">			
-				<input style="float:right;position:relative;width:15pt" onclick="prevImage()" type="image" src="prev3.gif">
-				<input style="float:right;position:relative;top:1pt;left:1pt" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
-				<input style="float:right;width:20pt" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="1">
+				<input id="modify" onclick="edit()" type="submit" value="Edit">
+				<input id="cancel" onclick="cancelEdit()" type="submit" value="Discard">
+				<input class="pageTurn_VR" onclick="nextImage()" type="image" src="next3.gif">			
+				<input class="pageTurn_VR" onclick="prevImage()" type="image" src="prev3.gif">
+				<input id="goToPage_VR" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
+				<input id="pageNum_VR" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="1">
 			</div>
 			<br>
 			<div id="textButtons">
-				<input style="text-align:center;width:32%" onclick="toTranscription()" type="Submit" value="Transcription">
-				<input style="text-align:center;width:32%" onclick="toTranslation()" type="Submit" value="Translation">
-				<input style="text-align:center;width:32%" onclick="toNotes()" type="Submit" value="Notes">
+				<input class="changeVR" onclick="toTranscription()" type="Submit" value="Transcription">
+				<input class="changeVR" onclick="toTranslation()" type="Submit" value="Translation">
+				<input class="changeVR" onclick="toNotes()" type="Submit" value="Notes">
 			</div>
 		</div>
-		<iframe id="textView" style="font-family:arial" src="transcription/trsc_001.txt" width="100%"></iframe>
-		<textarea id="editMode" src="" style="resize:none;position:absolute;top:0pt;visibility:hidden"></textarea>
+		<iframe id="textView" src="transcription/trsc_001.txt" width="100%"></iframe>
+		<textarea id="editMode" src=""></textarea>
 	</viewRight>
 	
 	<script>
