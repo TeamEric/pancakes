@@ -17,21 +17,10 @@
 			<input id="searchButton" onclick="searchText()" type="image" src="search2.gif">
 		</div>
 	</div>
-	<iconMenu id="menu">
-		<!--
-		<img id="icon" alt="001" onclick="open("001")" src="icons/001.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;"></img>
-		<img id="icon" alt="002" onclick="open()" src="icons/002.jpg" style="width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:5px;"></img>
-		-->
-	</iconMenu>
+	<iconMenu id="menu"></iconMenu>
 	<searchMenu id="searchMenu">
 		<input id="closeSearchMenu" onclick="searchText()" type="image" src="search3.gif">
 		<h3>Results:</h3>
-		<!--
-		<div id="searchBody">
-			<p>No results found.</p>
-			<p class="searchResult" onclick="goToNum(22)">Page 22</p>
-		</div>
-		-->
 	</searchMenu>
 	<viewLeft id="left">
 		<div class="rollovericons" id="buttonsL">
@@ -57,7 +46,7 @@
 				<input class="pageTurn_VR" onclick="nextImage()" type="image" src="next3.gif">			
 				<input class="pageTurn_VR" onclick="prevImage()" type="image" src="prev3.gif">
 				<input id="goToPage_VR" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
-				<input id="pageNum_VR" type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="1">
+				<input type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="1">
 			</div>
 			<br>
 			<div id="textButtons">
@@ -71,12 +60,26 @@
 	</viewRight>
 	
 	<script>
+	//Initial calls:
 	zoomDef();
+	createMenu();
+	resize_page();
+	pop_up();
+	
+	//Global variables:
+	var login = 0;
+	var visible = 0;
+	var editing=0;
+	var widthF = document.getElementById("image").style.width;
+	var widthI = document.getElementById("textView").style.height;
+	var widthE = document.getElementById("editMode").style.height;
+	
+	//Functions:
 	function placeHolder(num) {
 		document.getElementById("pagen_l").placeholder = num;
 		document.getElementById("pagen_r").placeholder = num;
-		
 	}
+	
 	function createMenu() {
 		for (var i = 0;i<292;i++) {
 			var x = document.createElement("IMG");
@@ -101,8 +104,6 @@
 			console.log('hi');
 		}
 	}
-	
-	createMenu();
 	
 	function searchText(){
 		if(document.getElementById("searchMenu").style.visibility=="visible"){
@@ -142,9 +143,6 @@
 					plc = string.search(searchText);
 				}
 			}
-			
-			
-			
 			if (list.length>0){
 				var j=0;
 				for(j=0;j<list.length;j++){
@@ -152,7 +150,7 @@
 					var txt=document.createTextNode("Page " + list[j][0] + ": ..." + list[j][1] + "...");
 					sr.appendChild(txt);
 					sr.className="searchResult";
-					sr.alt=j;
+					sr.alt=list[j][0];
 					sr.onclick=function() {goToNum(this.alt);searchText();};
 					document.getElementById("searchBody").appendChild(sr);
 				}
@@ -167,7 +165,6 @@
 		}
 	}	
 	
-	var login = 0;
 	
 	function saveText(){
 		var s = document.getElementById("textView").src;
@@ -192,8 +189,6 @@
 			}
 		});
 	}
-	
-	var visible = 0;
 	
 	function reloadPage(){
 		document.getElementById("textView").src=document.getElementById("textView").src;
@@ -221,8 +216,6 @@
 		editing = 0;
 	}
 	
-	var editing=0;
-	
 	function edit(){
 		if(document.getElementById("modify").value=="Save"){
 			saveText();
@@ -247,6 +240,7 @@
 			}
 		}		
 	}
+	
 	function resize_page(){
 		document.getElementById("left").style.height = String(window.innerHeight-100) + "px";
 		document.getElementById("right").style.height = String(window.innerHeight-100) + "px";
@@ -255,10 +249,6 @@
 			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;			
 		}
 	}
-	resize_page();
-	var widthF = document.getElementById("image").style.width;
-	var widthI = document.getElementById("textView").style.height;
-	var widthE = document.getElementById("editMode").style.height;
 	
 	function toggle(){
 		var full = "94%";
@@ -314,6 +304,7 @@
 		}
 		resize_page();
 	}
+	
 	function pop_up(){
 		if(document.getElementById("menu").style.visibility == "hidden"){
 			document.getElementById("menu").style.visibility = "visible";
@@ -322,7 +313,7 @@
 			document.getElementById("menu").style.visibility = "hidden";
 		}
 	}
-	pop_up();
+	
 	function nextImage() {
 		if(editing == 1){
 			saveText();
@@ -357,6 +348,7 @@
 			image.src = String(dir+mid+ext);
 		}
 	}
+	
 	function prevImage() {
 		if(editing == 1){
 			saveText();
@@ -391,6 +383,7 @@
 			image.src = String(dir+mid+ext);
 		}
 	}
+	
 	function toTranscription(){
 		var image=document.getElementById('page');
 		var dir="transcription/trsc_";
@@ -408,6 +401,7 @@
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
 	}
+	
 	function toTranslation(){
 		var image=document.getElementById('page');
 		var dir="translation/trns_";
@@ -425,6 +419,7 @@
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
 	}
+	
 	function toNotes(){
 		var image=document.getElementById('page');
 		var dir="note/note_";
@@ -442,6 +437,7 @@
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
 	}
+	
 	function nextText(){
 		var frame=document.getElementById('textView');
 		var tsrc=frame.src;
@@ -510,6 +506,7 @@
 			imgStyle["width"]=num+"%";
 		}
 	}
+	
 	function zoomOut(){
 		var image=document.getElementById('page');
 		var imgStyle=image.style;
@@ -519,6 +516,7 @@
 			imgStyle["width"]=num+"%";
 		}
 	}
+	
 	function zoomDef(){
 		var image=document.getElementById('page');
 		var imgStyle=image.style;
