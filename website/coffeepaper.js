@@ -1,13 +1,16 @@
+	//Global variables:
+	var login = 0;
+	var visible = 0;
+	var editing=0;
+	var numPages = 291;
+	
 	//Initial calls:
 	zoomDef();
 	createMenu();
 	resize_page();
 	pop_up();
 	
-	//Global variables:
-	var login = 0;
-	var visible = 0;
-	var editing=0;
+	//Global style
 	var widthF = document.getElementById("image").style.width;
 	var widthI = document.getElementById("textView").style.height;
 	var widthE = document.getElementById("editMode").style.height;
@@ -19,13 +22,12 @@
 	}
 	
 	function createMenu() {
-		for (var i = 0;i<292;i++) {
+		for (var i = 0;i<numPages+1;i++) {
 			var x = document.createElement("IMG");
 			var num = i+"";
 			while (num.length<3) num = "0" + num;
 			
 			x.src = "icons/"+num+".jpg";
-			var z = "width:16%;box-shadow: 0 0 1px 1px #666;position:relative;left:" + ((i*5)%30) + "px;";
 			x.id = "icon";
 			var al = i;
 			x.alt = al;
@@ -33,6 +35,9 @@
 			x.style.width = "16%";
 			x.style.position = "relative";
 			x.style.left = ((i*5+5)%30) + "px";
+			if (i%6==5) {
+				x.style.left = "30px";
+			}
 			x.onclick = function() {goToNum(this.alt);pop_up();};
 			var y = document.getElementById("menu");
 			y.appendChild(x);
@@ -53,7 +58,7 @@
 			searchText = searchText.toLowerCase();
 			var list = [];
 			var i;
-			for(i=0;i<292;i++){
+			for(i=0;i<numPages+1;i++){
 				var string;
 				var stringOriginal;
 				var src =document.getElementById("textView").src;
@@ -423,7 +428,7 @@
 		var dir="img/";
 		var ext=".jpg";
 		var data=String(num);
-		if(parseFloat(data)>=0&&parseFloat(data)<=300){
+		if(parseFloat(data)>=0&&parseFloat(data)<=numPages){
 			while(data.length<3)data="0"+data;
 			image.src=String(dir+data+ext);
 			image.alt=data;
