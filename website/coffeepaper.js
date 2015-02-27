@@ -49,7 +49,7 @@
 			document.getElementById("searchMenu").style.visibility = "hidden";
 			document.getElementById("searchMenu").removeChild(document.getElementById("searchBody"));
 		}
-		else{
+		else if(document.getElementById("searchInput").value.length>1){
 			document.getElementById("searchMenu").style.visibility = "visible";
 			var searchBody=document.createElement("div");
 			searchBody.id="searchBody";
@@ -86,6 +86,7 @@
 					plc = string2.search(searchText);
 					plc2 = plc + string.length - string2.length;
 				}
+				
 			}
 			if (list.length>0){
 				var j=0;
@@ -107,6 +108,7 @@
 			}
 			
 		}
+		else ;
 	}	
 	
 	
