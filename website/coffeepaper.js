@@ -9,6 +9,7 @@
 	createMenu();
 	resize_page();
 	pop_up();
+	toTranscription();
 	
 	//Global style
 	var widthF = document.getElementById("image").style.width;
@@ -346,6 +347,7 @@
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
+		document.getElementById("searchInput").placeholder="Search Transcription";
 	}
 	
 	function toTranslation(){
@@ -364,6 +366,7 @@
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
+		document.getElementById("searchInput").placeholder="Search Translation";
 	}
 	
 	function toNotes(){
@@ -382,6 +385,7 @@
 		var txtSrc=textView.src;
 		var item=String(dir+mid+ext);
 		textView.setAttribute('src',item);
+		document.getElementById("searchInput").placeholder="Search Notes";
 	}
 	
 	function nextText(){
