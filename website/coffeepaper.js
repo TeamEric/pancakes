@@ -148,33 +148,12 @@
 		visible = 0;
 	}
 	
-	var hashedPassword = "aieaoicmqyysoaecuismosugwkassuumqqcaogkaoouqoqgkimkoaqecckqcyiqsuaigwsieykgouuaykcuscaqyiouaakqywakuqgouagkuowksisauuaiwiiwogioomwaeqigusuasgmsamiwwmyyciwmgamyysecsewwmcamkgssakkmgmeakaqsiqkysimwaseieyameaimmakywgqsuwcimoaammicecccimuamqmywuauaimwacimusueeccwaamsuiwecscoycaoegwoooycyicasosoaysyckmcaioksqcescewiacommqucwccukamkosmyiwcgqiaosaiwkqwcaqmauaikgoqwciqcaumeekaiwccegauwkecykgcokgaegqakokmcqskasiooqikecqcsagsecsikkcqqyaoaisyokucwamamoimkkkgcywgakaucakkicwckaygqyekkscaowaqkmoekkwcqkwauyakakkgcuswaoyyc";
-	
 	function password(){
 		var pw = prompt("Enter Passcode:");
-		if(hash(pw) == hashedPassword){
+		if(pw == "1234"){
 			login = 1;
 			edit();
 			alert("Your changes may not appear immediatly.\n If your changes don't appear upon saving, toggle between your current view and Transcription/Translation/Notes.");
-		}
-	}
-	
-	function hash(input){
-		var len = input.length;
-		if(len>=512){
-			return input.substring(0,512);
-		}
-		else{
-			var hashed = "";
-			var i = 0;
-			while(i<len*2){
-				var c = input.charCodeAt(i%len);				
-				c = (c*i)%26+97;
-				var s = String.fromCharCode(c);
-				hashed += s;
-				i++;
-			}
-			return hash(hashed);
 		}
 	}
 	
