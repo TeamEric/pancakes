@@ -9,12 +9,14 @@
 	createMenu();
 	resize_page();
 	pop_up();
+	
+		//document.getElementById("editMode").style.right="1px";
 	toTranscription();
 	
 	//Global style
 	var widthF = document.getElementById("image").style.width;
 	var widthI = document.getElementById("textView").style.height;
-	var widthE = document.getElementById("editMode").style.height;
+	var widthE;
 	
 	//Functions:
 	function placeHolder(num) {
@@ -112,6 +114,26 @@
 		else ;
 	}	
 	
+	function createEdit() {
+		var edit = document.createElement("textarea");
+		edit.id = "editMode";
+		edit.style.position = "relative";
+		edit.style.resize = "none";
+		edit.style.top = "0pt";
+		edit.style.visibility = "visible";
+		edit.style.width = "95%";
+		document.getElementById("rightIn").appendChild(edit);
+	}
+	
+	function deleteEdit() {
+		try {
+			while (true){
+				document.getElementById("editMode").parentElement.removeChild(document.getElementById("editMode"));
+			}
+		}
+		catch (e) {
+		}
+	}
 	
 	function saveText(){
 		var s = document.getElementById("textView").src;
@@ -124,6 +146,7 @@
 				   url: s.substring(pos)},
 			success: reloadPage()
 		});
+		deleteEdit();
 	}
 	
 	function loadText(){
@@ -141,10 +164,6 @@
 		document.getElementById("textView").src=document.getElementById("textView").src;
 		document.getElementById("modify").value="Edit";
 		document.getElementById("textView").style.width="100%";
-		document.getElementById("editMode").style.height="0%";
-		document.getElementById("editMode").style.width="0%";
-		document.getElementById("editMode").style.visibility="hidden";
-		document.getElementById("editMode").style.position="absolute";
 		visible = 0;
 	}
 	
@@ -182,6 +201,7 @@
 		document.getElementById("cancel").style.visibility="hidden";
 		reloadPage();
 		editing = 0;
+		deleteEdit();
 	}
 	
 	function edit(){
@@ -197,10 +217,12 @@
 			else if(login==1){
 				document.getElementById("modify").value="Save";
 				document.getElementById("textView").style.width="0%";
-				document.getElementById("editMode").style.position="relative";
-				document.getElementById("editMode").style.width="95%";
+				createEdit();
+				try {
 				document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
-				document.getElementById("editMode").style.visibility="visible";	
+				}
+				catch (e) {
+				}
 				document.getElementById("cancel").style.visibility="visible";
 				visible = 1;
 				loadText();
@@ -214,7 +236,11 @@
 		document.getElementById("right").style.height = String(window.innerHeight-100) + "px";
 		if(document.getElementById("textView").style.height!="0%"){
 			document.getElementById("textView").style.height = String(window.innerHeight-160) + "px";
-			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;			
+			try {
+			document.getElementById("editMode").style.height=document.getElementById("textView").style.height;
+			}
+			catch (e){
+			}
 		}
 	}
 	
@@ -229,7 +255,11 @@
 			document.getElementById("right").style.width = half;
 			document.getElementById("image").style.width=widthF;
 			document.getElementById("textView").style.height=widthI;
+			try {
 			document.getElementById("editMode").style.height=widthE;
+			}
+			catch (e) {
+			}
 			document.getElementById("image").style.visibility = "visible";
 			document.getElementById("buttonsL").style.visibility = "visible";
 			document.getElementById("buttonsR").style.visibility = "visible";
@@ -245,13 +275,21 @@
 			document.getElementById("right").style.width = none;
 			document.getElementById("image").style.width=widthF;
 			document.getElementById("textView").style.height="0%";
+			try {
 			document.getElementById("editMode").style.height="0%";
+			}
+			catch (e) {
+			}
 			document.getElementById("image").style.visibility = "visible";
 			document.getElementById("buttonsL").style.visibility = "visible";
 			document.getElementById("buttonsR").style.visibility = "hidden";
 			document.getElementById("textButtons").style.visibility = "hidden";
 			document.getElementById("textView").style.visibility = "hidden";
+			try {
 			document.getElementById("editMode").style.visibility = "hidden";
+			}
+			catch (e) {
+			}
 		}
 		else{
 			document.getElementById("toggle").src = "right.gif";
@@ -260,13 +298,17 @@
 			widthF=document.getElementById("image").style.width;
 			document.getElementById("image").style.width = "0%";
 			document.getElementById("textView").style.height=widthI;
+			try {
 			document.getElementById("editMode").style.height=widthE;
+			}
+			catch(e) {
+			}
 			document.getElementById("image").style.visibility = "hidden";
 			document.getElementById("buttonsL").style.visibility = "hidden";
 			document.getElementById("buttonsR").style.visibility = "visible";
 			document.getElementById("textButtons").style.visibility = "visible";
 			document.getElementById("textView").style.visibility = "visible";
-			if(visibile == 1){
+			if(visible == 1){
 				document.getElementById("editMode").style.visibility = "visible";
 			}
 		}
