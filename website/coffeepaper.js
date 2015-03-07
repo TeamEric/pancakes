@@ -267,7 +267,21 @@
 			document.getElementById("image").style.visibility = "visible";
 			document.getElementById("buttonsL").style.visibility = "visible";
 			document.getElementById("buttonsR").style.visibility = "visible";
+			
+			document.getElementById("next_left").style.visibility="visible";
+			document.getElementById("prev_left").style.visibility="visible";
+			document.getElementById("goToPage_VL").style.visibility="visible";
+			document.getElementById("pagen_l").style.visibility="visible";
+
+			document.getElementById("next_right").style.visibility="visible";
+			document.getElementById("prev_right").style.visibility="visible";
+			document.getElementById("goToPage_VR").style.visibility="visible";
+			document.getElementById("pagen_r").style.visibility="visible";	
+			
 			document.getElementById("textButtons").style.visibility = "visible";
+			document.getElementById("vr3").style.visibility="visible";
+			document.getElementById("vr2").style.visibility="visible";
+			document.getElementById("vr1").style.visibility="visible";
 			document.getElementById("textView").style.visibility = "visible";
 			if(visible == 1){
 				document.getElementById("editMode").style.visibility = "visible";
@@ -286,8 +300,24 @@
 			}
 			document.getElementById("image").style.visibility = "visible";
 			document.getElementById("buttonsL").style.visibility = "visible";
+			
 			document.getElementById("buttonsR").style.visibility = "hidden";
+			
+			document.getElementById("next_left").style.visibility="visible";
+			document.getElementById("prev_left").style.visibility="visible";
+			document.getElementById("goToPage_VL").style.visibility="visible";
+			document.getElementById("pagen_l").style.visibility="visible";
+
+			document.getElementById("next_right").style.visibility="hidden";
+			document.getElementById("prev_right").style.visibility="hidden";
+			document.getElementById("goToPage_VR").style.visibility="hidden";
+			document.getElementById("pagen_r").style.visibility="hidden";	
+			
 			document.getElementById("textButtons").style.visibility = "hidden";
+			document.getElementById("vr3").style.visibility="hidden";
+			document.getElementById("vr2").style.visibility="hidden";
+			document.getElementById("vr1").style.visibility="hidden";
+			
 			document.getElementById("textView").style.visibility = "hidden";
 			try {
 			document.getElementById("editMode").style.visibility = "hidden";
@@ -309,8 +339,21 @@
 			}
 			document.getElementById("image").style.visibility = "hidden";
 			document.getElementById("buttonsL").style.visibility = "hidden";
+			document.getElementById("next_left").style.visibility="hidden";
+			document.getElementById("prev_left").style.visibility="hidden";
+			document.getElementById("goToPage_VL").style.visibility="hidden";
+			document.getElementById("pagen_l").style.visibility="hidden";
+			
 			document.getElementById("buttonsR").style.visibility = "visible";
 			document.getElementById("textButtons").style.visibility = "visible";
+			document.getElementById("next_right").style.visibility="visible";
+			document.getElementById("prev_right").style.visibility="visible";
+			document.getElementById("goToPage_VR").style.visibility="visible";
+			document.getElementById("pagen_r").style.visibility="visible";	
+			document.getElementById("vr3").style.visibility="visible";
+			document.getElementById("vr2").style.visibility="visible";
+			document.getElementById("vr1").style.visibility="visible";
+			
 			document.getElementById("textView").style.visibility = "visible";
 			if(visible == 1){
 				document.getElementById("editMode").style.visibility = "visible";
