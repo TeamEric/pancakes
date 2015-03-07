@@ -9,6 +9,7 @@
 	createMenu();
 	resize_page();
 	pop_up();
+	setPageTurnControlsVisible();
 	
 		//document.getElementById("editMode").style.right="1px";
 	toTranscription();
@@ -202,6 +203,7 @@
 		reloadPage();
 		editing = 0;
 		deleteEdit();
+		setPageTurnControlsVisible();
 	}
 	
 	function edit(){
@@ -209,6 +211,7 @@
 			saveText();
 			document.getElementById("cancel").style.visibility="hidden";
 			editing = 0;
+			setPageTurnControlsVisible();
 		}
 		else if(document.getElementById("modify").value=="Edit"){
 			if(login==0){
@@ -227,6 +230,7 @@
 				visible = 1;
 				loadText();
 				editing = 1;
+				setPageTurnControlsInvisible();
 			}
 		}		
 	}
@@ -534,4 +538,52 @@
 		var image=document.getElementById('page');
 		var imgStyle=image.style;
 		imgStyle["width"]="100%";
+	}
+	
+	/*
+	Added to ensure that no one changes pages
+	or changes text display modes while edit
+	mode exists or is visible. Not sure why
+	we need this but it's probably good practice
+	to add it in anyway.
+	*/
+	function setPageTurnControlsInvisible(){
+		/*set all page control items to hidden*/
+		document.getElementById("menuIcon").style.visibility="hidden";
+		document.getElementById("searchInput").style.visibility="hidden";
+		document.getElementById("searchButton").style.visibility="hidden";
+		
+		document.getElementById("next_left").style.visibility="hidden";
+		document.getElementById("prev_left").style.visibility="hidden";
+		document.getElementById("goToPage_VL").style.visibility="hidden";
+		document.getElementById("pagen_l").style.visibility="hidden";
+
+		document.getElementById("next_right").style.visibility="hidden";
+		document.getElementById("prev_right").style.visibility="hidden";
+		document.getElementById("goToPage_VR").style.visibility="hidden";
+		document.getElementById("pagen_r").style.visibility="hidden";	
+		
+		document.getElementById("vr1").style.visibility="hidden";
+		document.getElementById("vr2").style.visibility="hidden";
+		document.getElementById("vr3").style.visibility="hidden";	
+	}
+	function setPageTurnControlsVisible(){
+		/*Set all items to visible*/
+		document.getElementById("menuIcon").style.visibility="visible";
+		document.getElementById("searchInput").style.visibility="visible";
+		document.getElementById("searchButton").style.visibility="visible";
+		
+		document.getElementById("next_left").style.visibility="visible";
+		document.getElementById("prev_left").style.visibility="visible";
+		document.getElementById("goToPage_VL").style.visibility="visible";
+		document.getElementById("pagen_l").style.visibility="visible";
+
+		document.getElementById("next_right").style.visibility="visible";
+		document.getElementById("prev_right").style.visibility="visible";
+		document.getElementById("goToPage_VR").style.visibility="visible";
+		document.getElementById("pagen_r").style.visibility="visible";
+
+		document.getElementById("vr1").style.visibility="visible";
+		document.getElementById("vr2").style.visibility="visible";
+		document.getElementById("vr3").style.visibility="visible";
 	}

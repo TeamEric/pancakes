@@ -10,7 +10,7 @@
 	</head>
 <body onresize="resize_page()">
 	<div id="topContainer">
-		<input class="menuIcon" onclick="pop_up()" type="image" src="menu.gif">
+		<input class="menuIcon" id="menuIcon" onclick="pop_up()" type="image" src="menu.gif">
 		<input class="toggle" id="toggle" onclick="toggle()" type="image" src="left.gif">
 		<img class="titleImg" type="image" src="title.gif">
 		<div class="searchContainer">
@@ -28,8 +28,8 @@
 			<input id="zoomOutButton" type="image" onclick="zoomOut()" src="zoomOut.gif" alt="Submit">
 			<input id="zoomDefButton" type="image" onclick="zoomDef()" src="zoom100.gif" alt="Submit">
 			<input id="zoomInButton" type="image" onclick="zoomIn()" src="zoomIn.gif" alt="Submit">
-			<input class="pageTurn_VL" onclick="nextImage()" type="image" src="next3.gif">
-			<input class="pageTurn_VL" onclick="prevImage()" type="image" src="prev3.gif">
+			<input class="pageTurn_VL" id="next_left" onclick="nextImage()" type="image" src="next3.gif">
+			<input class="pageTurn_VL" id="prev_left" onclick="prevImage()" type="image" src="prev3.gif">
 			<input id="goToPage_VL" onclick="goToNum(document.getElementById('pagen_l').value)" type="Submit" value="Go">
 			<input type="text" id="pagen_l" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_l').value)" placeholder="0">
 		</div>
@@ -44,16 +44,16 @@
 			<div class="rollovericons" id="buttonsR">
 				<input id="modify" onclick="edit()" type="submit" value="Edit">
 				<input id="cancel" onclick="cancelEdit()" type="submit" value="Discard">
-				<input class="pageTurn_VR" onclick="nextImage()" type="image" src="next3.gif">			
-				<input class="pageTurn_VR" onclick="prevImage()" type="image" src="prev3.gif">
+				<input class="pageTurn_VR" id="next_right" onclick="nextImage()" type="image" src="next3.gif">			
+				<input class="pageTurn_VR" id="prev_right" onclick="prevImage()" type="image" src="prev3.gif">
 				<input id="goToPage_VR" onclick="goToNum(document.getElementById('pagen_r').value)" type="Submit" value="Go">
 				<input type="text" id="pagen_r" name="Search" onkeydown="if (event.keyCode == 13) goToNum(document.getElementById('pagen_r').value)" placeholder="0">
 			</div>
 			<br>
 			<div id="textButtons">
-				<input class="changeVR" onclick="toTranscription()" type="Submit" value="Transcription">
-				<input class="changeVR" onclick="toTranslation()" type="Submit" value="Translation">
-				<input class="changeVR" onclick="toNotes()" type="Submit" value="Notes">
+				<input class="changeVR" id="vr1" onclick="toTranscription()" type="Submit" value="Transcription">
+				<input class="changeVR" id="vr2" onclick="toTranslation()" type="Submit" value="Translation">
+				<input class="changeVR" id="vr3" onclick="toNotes()" type="Submit" value="Notes">
 			</div>
 		</div>
 		<iframe id="textView" src="transcription/trsc_000.txt" width="100%"></iframe>
