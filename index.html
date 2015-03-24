@@ -1,14 +1,23 @@
-<html style="font-family:Helvetica, Arial, sans-serif;">
+<html>
 <head>
 <script type="text/javascript">
 
 function delayer(){
-    window.location = "/website/index.html"
+ /*
+	var winloc = window.location;
+	var winlen = window.location.length;
+	winlen-=10;
+	winloc=winloc+"";
+	var modloc = winloc.substring(0,winlen);
+	var newloc = "/website/index.html";
+	window.location = modloc+newloc;
+ */
+	window.location="website/index.html";
 }
 
 </script>
 </head>
-<body onLoad="setTimeout('delayer()', 2000)">
+<body onLoad="setTimeout('delayer()', 5000)">
 <h2>Prepare to be redirected!</h2>
 <p>Not sure where this is going!</p>
 
